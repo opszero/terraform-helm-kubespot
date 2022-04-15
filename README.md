@@ -1,4 +1,4 @@
-# Kubespot (Helm)
+# opsZero Kubespot (Helm)
 
  - cert-manager
  - datadog
