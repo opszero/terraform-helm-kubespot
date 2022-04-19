@@ -11,7 +11,7 @@ resource "helm_release" "cert-manager" {
   }
 }
 
-locals = {
+locals {
   cert_manager_cluster_issuer = <<EOF
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
