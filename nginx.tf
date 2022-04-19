@@ -7,7 +7,7 @@ resource "helm_release" "nginx" {
   create_namespace = true
 
   values = [
-    "${file("${path.module}/nginx.yml")}"
+    var.nginx_yml_file == null ? "${file("${path.module}/nginx.yml")}" : "${var.nginx_yml_file}"
   ]
 
   set {

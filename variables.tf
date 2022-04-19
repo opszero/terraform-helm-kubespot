@@ -1,6 +1,9 @@
 variable "nginx_replica_count" {
   default = 1
 }
+variable "nginx_yml_file" {
+  default = null
+}
 
 variable "datadog_api_key" {
   default = ""
