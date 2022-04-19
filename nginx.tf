@@ -6,9 +6,9 @@ resource "helm_release" "nginx" {
   namespace        = "nginx"
   create_namespace = true
 
-  values = [
-    var.nginx_yml_file == null ? "${file("${path.module}/nginx.yml")}" : "${var.nginx_yml_file}"
-  ]
+  # values = [
+  #   var.nginx_yml_file == null ? "${file("${path.module}/nginx.yml")}" : "${var.nginx_yml_file}"
+  # ]
 
   set {
     name  = "controller.replicaCount"
