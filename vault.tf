@@ -71,12 +71,6 @@ EOF
   ]
 }
 
-provider "helm" {
-  kubernetes {
-    config_path = "~/.kube/config"
-  }
-}
-
 resource "helm_release" "vault" {
   name             = "vault"
   repository       = "https://helm.releases.hashicorp.com"
