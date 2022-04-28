@@ -1,3 +1,7 @@
+variable "nginx_name" {
+  default = "nginx"
+}
+
 variable "nginx_replica_count" {
   default = 1
 }
