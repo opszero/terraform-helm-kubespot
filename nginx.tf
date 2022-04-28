@@ -15,6 +15,11 @@ resource "helm_release" "nginx" {
     value = var.nginx_replica_count
   }
 
+  set {
+    name  = "controller.ingressClass"
+    value = var.nginx_name
+  }
+
   depends_on = [
     helm_release.cert-manager,
     helm_release.prometheus,
