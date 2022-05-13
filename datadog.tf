@@ -15,7 +15,8 @@ resource "helm_release" "datadog" {
     [var.datadog_values == "" ? "${file("${path.module}/datadog.yml")}" : var.datadog_values],
   var.datadog_values_extra)
 
-  version    = "2.30.19"
+  version = "2.30.19"
+  wait    = false
 
   set {
     name  = "datadog.apiKey"
