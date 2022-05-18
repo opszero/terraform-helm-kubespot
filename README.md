@@ -5,7 +5,6 @@
  - keda
  - nginx
  - prometheus
- - vault
 
 # Configuration
 ## cert-manager
