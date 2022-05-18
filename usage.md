@@ -45,3 +45,16 @@ spec:
 This project is by [opsZero](https://www.opszero.com). We help organizations
 migrate to Kubernetes so [reach out](https://www.opszero.com/#contact) if you
 need help!
+
+# Deployment
+
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+# Teardown
+
+```sh
+terraform destroy -auto-approve
+```
