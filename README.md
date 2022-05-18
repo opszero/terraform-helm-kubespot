@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 # Kubespot (Helm)
 
  - cert-manager
@@ -45,3 +46,47 @@ spec:
 This project is by [opsZero](https://www.opszero.com). We help organizations
 migrate to Kubernetes so [reach out](https://www.opszero.com/#contact) if you
 need help!
+
+# Deployment
+
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+# Teardown
+
+```sh
+terraform destroy -auto-approve
+```
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
+| <a name="provider_null"></a> [null](#provider\_null) | n/a |
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | n/a | `any` | `null` | no |
+| <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | n/a | `string` | `""` | no |
+| <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | n/a | `string` | `""` | no |
+| <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | n/a | `list` | `[]` | no |
+| <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | n/a | `string` | `"nginx"` | no |
+| <a name="input_nginx_replica_count"></a> [nginx\_replica\_count](#input\_nginx\_replica\_count) | n/a | `number` | `1` | no |
+| <a name="input_nginx_yml_file"></a> [nginx\_yml\_file](#input\_nginx\_yml\_file) | n/a | `any` | `null` | no |
+## Resources
+
+| Name | Type |
+|------|------|
+| [helm_release.cert-manager](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.datadog](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.keda](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.nginx](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.prometheus](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [null_resource.cert-manager-cluster-issuer](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
