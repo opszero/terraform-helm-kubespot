@@ -1,11 +1,11 @@
 variable "nginx_name" {
   default     = "nginx"
-  description = "The release name of nginx ingress helm chart"
+  description = "Release name for the installed helm chart"
 }
 
 variable "nginx_replica_count" {
   default     = 1
-  description = "The replica count of nginx ingress controller"
+  description = "The replica count for nginx ingress controller"
 }
 
 variable "nginx_yml_file" {
@@ -19,7 +19,7 @@ variable "cert_manager_email" {
 
 variable "datadog_api_key" {
   default     = ""
-  description = "The API key of the datadog"
+  description = "The API key for datadog"
 }
 
 variable "datadog_values" {
