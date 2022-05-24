@@ -70,11 +70,11 @@ terraform destroy -auto-approve
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | Your email address to use for cert manager | `any` | `null` | no |
-| <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key of the datadog | `string` | `""` | no |
+| <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
 | <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
 | <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
-| <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | The release name of nginx ingress helm chart | `string` | `"nginx"` | no |
-| <a name="input_nginx_replica_count"></a> [nginx\_replica\_count](#input\_nginx\_replica\_count) | The replica count of nginx ingress controller | `number` | `1` | no |
+| <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | Release name for the installed helm chart | `string` | `"nginx"` | no |
+| <a name="input_nginx_replica_count"></a> [nginx\_replica\_count](#input\_nginx\_replica\_count) | The replica count for nginx ingress controller | `number` | `1` | no |
 | <a name="input_nginx_yml_file"></a> [nginx\_yml\_file](#input\_nginx\_yml\_file) | n/a | `any` | `null` | no |
 ## Resources
 
