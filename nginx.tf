@@ -21,11 +21,6 @@ resource "helm_release" "nginx" {
   }
 
   set {
-    name  = "controller.autoscaling.enabled"
-    value = var.nginx_autoscaling_enabled
-  }
-
-  set {
     name  = "controller.keda.enabled"
     value = var.nginx_autoscaling_enabled
   }
