@@ -20,6 +20,26 @@ resource "helm_release" "nginx" {
     value = var.nginx_name
   }
 
+  set {
+    name  = "controller.autoscaling.enabled"
+    value = var.nginx_autoscaling_enabled
+  }
+
+  set {
+    name  = "controller.keda.enabled"
+    value = var.nginx_autoscaling_enabled
+  }
+
+  set {
+    name  = "controller.metrics.enabled"
+    value = var.prometheus_enabled
+  }
+
+  set {
+    name  = "controller.stats.enabled"
+    value = var.prometheus_enabled
+  }
+
   depends_on = [
     helm_release.cert-manager,
     helm_release.prometheus,
