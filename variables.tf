@@ -3,11 +3,13 @@ variable "prometheus_enabled" {
 }
 
 variable "nginx_name" {
-  default = "nginx"
+  default     = "nginx"
+  description = "Release name for the installed helm chart"
 }
 
 variable "nginx_replica_count" {
-  default = 1
+  default     = 1
+  description = "The replica count for nginx ingress controller"
 }
 
 variable "nginx_autoscaling_enabled" {
@@ -20,17 +22,21 @@ variable "nginx_yml_file" {
 }
 
 variable "cert_manager_email" {
-  default = null
+  default     = null
+  description = "Your email address to use for cert manager"
 }
 
 variable "datadog_api_key" {
-  default = ""
+  default     = ""
+  description = "The API key for datadog"
 }
 
 variable "datadog_values" {
-  default = ""
+  default     = ""
+  description = "Values for datadog helm chart"
 }
 
 variable "datadog_values_extra" {
-  default = []
+  default     = []
+  description = "List of extra values for datadog helm chart"
 }
