@@ -73,9 +73,11 @@ terraform destroy -auto-approve
 | <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
 | <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
 | <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
+| <a name="input_nginx_autoscaling_enabled"></a> [nginx\_autoscaling\_enabled](#input\_nginx\_autoscaling\_enabled) | Enable nginx autoscaling | `bool` | `false` | no |
 | <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | Release name for the installed helm chart | `string` | `"nginx"` | no |
 | <a name="input_nginx_replica_count"></a> [nginx\_replica\_count](#input\_nginx\_replica\_count) | The replica count for nginx ingress controller | `number` | `1` | no |
 | <a name="input_nginx_yml_file"></a> [nginx\_yml\_file](#input\_nginx\_yml\_file) | n/a | `any` | `null` | no |
+| <a name="input_prometheus_enabled"></a> [prometheus\_enabled](#input\_prometheus\_enabled) | n/a | `bool` | `false` | no |
 ## Resources
 
 | Name | Type |
