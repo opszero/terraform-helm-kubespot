@@ -36,3 +36,8 @@ variable "datadog_values_extra" {
   default     = []
   description = "List of extra values for datadog helm chart"
 }
+
+variable "grafana_enabled" {
+  default     = false
+  description = "Enable grafana"
+}
