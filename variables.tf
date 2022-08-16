@@ -8,7 +8,7 @@ variable "nginx_yml_file" {
 }
 
 variable "nginx_min_replicas" {
-  default = 1
+  default = 2
   description = "Minimum number of Nginx Replicas"
 }
 

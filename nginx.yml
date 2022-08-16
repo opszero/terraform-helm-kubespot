@@ -28,8 +28,6 @@ controller:
   keda:
     enabled: true
     apiVersion: "keda.sh/v1alpha1"
-    minReplicas: 2
-    maxReplicas: 11
     pollingInterval: 30
     cooldownPeriod: 300
     restoreToOriginalReplicaCount: true
