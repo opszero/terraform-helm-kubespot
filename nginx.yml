@@ -8,10 +8,12 @@ controller:
     proxy-body-size: "256m"
   proxySetHeaders:
     use-forwarded-headers: "true"
+  stats:
+    enabled: true
   metrics:
+    enabled: true
     service:
       annotations:
-        prometheus.io/port: "10254"
         prometheus.io/scrape: "true"
   service:
     type: "LoadBalancer"
@@ -23,3 +25,18 @@ controller:
   autoscaling:
     # We will be using Keda for the Autoscaling so we don't need the HPA.
     enabled: false
+  keda:
+    enabled: true
+    apiVersion: "keda.sh/v1alpha1"
+    minReplicas: 2
+    maxReplicas: 11
+    pollingInterval: 30
+    cooldownPeriod: 300
+    restoreToOriginalReplicaCount: true
+    triggers:
+     - type: prometheus
+       metadata:
+         serverAddress: http://prometheus-server.prometheus.svc.cluster.local
+         metricName: http_requests_total
+         threshold: '100'
+         query: sum(rate(http_requests_total[2m]))

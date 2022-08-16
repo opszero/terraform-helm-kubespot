@@ -1,6 +1,4 @@
 resource "helm_release" "prometheus" {
-  count = var.prometheus_enabled ? 1 : 0
-
   chart            = "prometheus"
   name             = "prometheus"
   namespace        = "prometheus"
