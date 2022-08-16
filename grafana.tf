@@ -1,4 +1,4 @@
-resource "helm_release" "prometheus" {
+resource "helm_release" "grafana" {
   chart            = "grafana"
   name             = "grafana"
   namespace        = "grafana"
