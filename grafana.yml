@@ -1,3 +1,6 @@
+adminUser: opszero
+adminPassword: opszero
+
 datasources:
  datasources.yaml:
    apiVersion: 1
