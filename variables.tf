@@ -1,24 +1,20 @@
-variable "prometheus_enabled" {
-  default = false
-}
-
 variable "nginx_name" {
   default     = "nginx"
   description = "Release name for the installed helm chart"
 }
 
-variable "nginx_replica_count" {
-  default     = 1
-  description = "The replica count for nginx ingress controller"
-}
-
-variable "nginx_autoscaling_enabled" {
-  description = "Enable nginx autoscaling"
-  default     = false
-}
-
 variable "nginx_yml_file" {
   default = null
+}
+
+variable "nginx_min_replicas" {
+  default = 1
+  description = "Minimum number of Nginx Replicas"
+}
+
+variable "nginx_max_replicas" {
+  default = 11
+  description = "Maximum number of Nginx Replicas"
 }
 
 variable "cert_manager_email" {

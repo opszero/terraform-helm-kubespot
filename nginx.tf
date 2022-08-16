@@ -1,4 +1,3 @@
-
 resource "helm_release" "nginx" {
   name             = var.nginx_name
   repository       = "https://kubernetes.github.io/ingress-nginx"
@@ -11,28 +10,18 @@ resource "helm_release" "nginx" {
   ]
 
   set {
-    name  = "controller.replicaCount"
-    value = var.nginx_replica_count
-  }
-
-  set {
     name  = "controller.ingressClass"
     value = var.nginx_name
   }
 
   set {
-    name  = "controller.keda.enabled"
-    value = var.nginx_autoscaling_enabled
+    name  = "controller.keda.minReplicas"
+    value = var.nginx_min_replicas
   }
 
   set {
-    name  = "controller.metrics.enabled"
-    value = var.prometheus_enabled
-  }
-
-  set {
-    name  = "controller.stats.enabled"
-    value = var.prometheus_enabled
+    name  = "controller.keda.maxReplicas"
+    value = var.nginx_max_replicas
   }
 
   depends_on = [
