@@ -5,8 +5,10 @@
  - keda
  - nginx
  - prometheus
+ - grafana
 
 # Configuration
+
 ## cert-manager
 
 To use cert-manager add the following annotation to your Ingress
@@ -37,6 +39,19 @@ spec:
             port:
               number: 80
 
+```
+
+# Grafana
+
+Grafana is installed on a ClusterIP use the following to open it locally.
+
+
+```
+kubectl port-forward -n grafana service/grafana 6891:80
+open https://localhost:6891
+
+Username: opszero
+Password: opszero
 ```
 
 # Support
