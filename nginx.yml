@@ -37,4 +37,10 @@ controller:
          serverAddress: http://prometheus-server.prometheus.svc.cluster.local
          metricName: http_requests_total
          threshold: '100'
-         query: sum(rate(http_requests_total[2m]))
+         query: sum(rate(nginx_ingress_controller_requests[2m]))
+     - type: prometheus
+       metadata:
+         serverAddress: http://prometheus-server.prometheus.svc.cluster.local
+         metricName: http_requests_duration
+         threshold: '2'
+         query: sum(rate(nginx_ingress_controller_response_duration_seconds_sum[2m]))
