@@ -19,4 +19,9 @@ resource "helm_release" "prometheus" {
     name  = "server.persistentVolume.enabled"
     value = false
   }
+
+  set {
+    name  = "alertmanager.persistentVolume.enabled"
+    value = false
+  }
 }
