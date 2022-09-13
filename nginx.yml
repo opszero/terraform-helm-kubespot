@@ -42,5 +42,5 @@ controller:
        metadata:
          serverAddress: http://prometheus-server.prometheus.svc.cluster.local
          metricName: http_requests_duration
-         threshold: '0.5'
+         threshold: '1'
          query: sum(rate(nginx_ingress_controller_response_duration_seconds_sum[2m]))
