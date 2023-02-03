@@ -12,6 +12,7 @@ sections:
 
 content: |-
     {{ include "./usage.md" }}
+    {{ include "./SUPPORT" }}
     {{ .Providers }}
     {{ .Inputs }}
     {{ .Resources }}
