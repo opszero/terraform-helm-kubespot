@@ -74,6 +74,13 @@ terraform apply -auto-approve
 ```sh
 terraform destroy -auto-approve
 ```
+# Pro Support
+
+[opsZero provides additional support](https://www.opszero.com/terraform) for our modules including:
+
+- Email support
+- Zoom Calls
+- Implementation Guidance
 ## Providers
 
 | Name | Version |
