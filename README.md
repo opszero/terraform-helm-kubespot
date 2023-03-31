@@ -1,12 +1,12 @@
 <!-- BEGIN_TF_DOCS -->
 # Kubespot (Helm)
 
- - cert-manager
- - datadog
- - keda
- - nginx
- - prometheus
- - grafana
+- cert-manager
+- datadog
+- keda
+- nginx
+- prometheus
+- grafana
 
 # Configuration
 
@@ -14,7 +14,7 @@
 
 To use cert-manager add the following annotation to your Ingress
 
-``` yaml
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -25,27 +25,25 @@ metadata:
   namespace: myIngress
 spec:
   tls:
-  - hosts:
-      - https-example.foo.com
-    secretName: testsecret-tls
+    - hosts:
+        - https-example.foo.com
+      secretName: testsecret-tls
   rules:
-  - host: https-example.foo.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: service1
-            port:
-              number: 80
-
+    - host: https-example.foo.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: service1
+                port:
+                  number: 80
 ```
 
 # Grafana
 
 Grafana is installed on a ClusterIP use the following to open it locally.
-
 
 ```
 kubectl port-forward -n grafana service/grafana 6891:80
@@ -55,13 +53,6 @@ Username: opszero
 Password: opszero
 ```
 
-# Support
-<a href="https://www.opszero.com"><img src="http://assets.opszero.com.s3.amazonaws.com/images/opszero_11_29_2016.png" width="300px"/></a>
-
-This project is by [opsZero](https://www.opszero.com). We help organizations
-migrate to Kubernetes so [reach out](https://www.opszero.com/#contact) if you
-need help!
-
 # Deployment
 
 ```sh
@@ -69,6 +60,7 @@ terraform init
 terraform plan
 terraform apply -auto-approve
 ```
+
 # Teardown
 
 ```sh
