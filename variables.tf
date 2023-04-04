@@ -8,12 +8,12 @@ variable "nginx_yml_file" {
 }
 
 variable "nginx_min_replicas" {
-  default = 2
+  default     = 2
   description = "Minimum number of Nginx Replicas"
 }
 
 variable "nginx_max_replicas" {
-  default = 11
+  default     = 11
   description = "Maximum number of Nginx Replicas"
 }
 
@@ -53,21 +53,21 @@ variable "grafana_ingress_hosts" {
 }
 
 variable "grafana_google_auth_client_id" {
-  default = ""
+  default     = ""
   description = "Add Google Auth client id"
 }
 
 variable "grafana_google_auth_client_secret" {
-  default = ""
+  default     = ""
   description = "Add Google Auth client secret"
 }
 
 variable "grafana_persistence_storage" {
-  default = false
+  default     = false
   description = "Enable persistence storage for Grafana"
 }
 
 variable "prometheus_persistence_storage" {
-  default = false
+  default     = false
   description = "Enable persistence storage for Prometheus"
 }
