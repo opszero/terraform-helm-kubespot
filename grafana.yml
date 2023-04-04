@@ -30,7 +30,7 @@ grafana.ini:
 ingress:
   enabled: ${INGRESS_ENABLED}
   hosts:
-    %{ for host in INGRESS_HSOTS }
+    %{ for host in INGRESS_HOSTS }
     - ${host}
     %{ endfor ~}
   path: "/grafana"
