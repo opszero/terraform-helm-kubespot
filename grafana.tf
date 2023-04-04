@@ -11,8 +11,8 @@ resource "helm_release" "grafana" {
     templatefile("${path.module}/grafana.yml", {
       GOOGLE_CLIENT_ID     = var.grafana_google_auth_client_id
       GOOGLE_CLIENT_SECRET = var.grafana_google_auth_client_secret,
-      INGRESS_ENABLED      = var.grafana_ingress_enabled
-      INGRESS_HOSTS        = var.grafana_ingress_hosts
+      INGRESS_ENABLED      = var.grafana_ingress_enabled,
+      INGRESS_HOSTS        = var.grafana_ingress_hosts,
     }),
   ]
 
