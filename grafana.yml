@@ -22,16 +22,16 @@ grafana.ini:
     token_url = https://accounts.google.com/o/oauth2/token
     allow_sign_up = true
   server:
-    %{ for host in INGRESS_HOSTS ~}
+    %{ for host in INGRESS_HOSTS }
     domain: ${host}
     root_url: "%(protocol)s://%(domain)s/grafana"
     serve_from_sub_path: true
-    %{ endfor ~}
+    %{ endfor }
 
 ingress:
   enabled: ${INGRESS_ENABLED}
   hosts:
-    %{ for host in INGRESS_HOSTS ~}
+    %{ for host in INGRESS_HOSTS }
     - ${host}
-    %{ endfor ~}
+    %{ endfor }
   path: "/grafana"
