@@ -25,14 +25,20 @@ resource "helm_release" "prometheus" {
   ## If defined, PVC must be created manually before volume will be bound
   ## Example if we want to use EFS, create storage class and pvc and add the
   ## claim name here
-  set {
-    name  = "server.persistentVolume.existingClaim"
-    value = ""
+  dynamic "set" {
+    for_each = var.prometheus_persistence_storage != false ? [1] : []
+    content {
+      name  = "server.persistentVolume.existingClaim"
+      value = ""
+    }
   }
 
-  set {
-    name  = "server.persistentVolume.size"
-    value = "8Gi"
+  dynamic "set" {
+    for_each = var.prometheus_persistence_storage != false ? [1] : []
+    content {
+      name  = "server.persistentVolume.size"
+      value = "8Gi"
+    }
   }
 
   set {

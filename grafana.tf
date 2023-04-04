@@ -11,13 +11,7 @@ resource "helm_release" "grafana" {
     templatefile("${path.module}/grafana.yml", {
       GOOGLE_CLIENT_ID     = var.grafana_google_auth_client_id
       GOOGLE_CLIENT_SECRET = var.grafana_google_auth_client_secret
-      },
-      {
-        count = var.grafana_ingress_enabled != true ? 1 : 0
-        name  = "ingress.hosts"
-        value = var.grafana_ingress_hosts
-      }
-    )
+    }),
   ]
 
   set {
@@ -30,4 +24,11 @@ resource "helm_release" "grafana" {
     value = var.grafana_persistence_storage
   }
 
+  dynamic "set" {
+    for_each = var.grafana_ingress_enabled != false ? [1] : []
+    content {
+      name  = "ingress.hosts"
+      value = jsonencode(var.grafana_ingress_hosts)
+    }
+  }
 }
