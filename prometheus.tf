@@ -17,7 +17,22 @@ resource "helm_release" "prometheus" {
 
   set {
     name  = "server.persistentVolume.enabled"
-    value = false
+    value = true
+  }
+  
+  ## Prometheus server data Persistent Volume existing claim name
+  ## Requires server.persistentVolume.enabled: true
+  ## If defined, PVC must be created manually before volume will be bound
+  ## Example if we want to use EFS, create storage class and pvc and add the
+  ## claim name here
+  set {
+    name  = "server.persistentVolume.existingClaim"
+    value = ''
+  }
+
+  set {
+    name  = "server.persistentVolume.size"
+    value = '8Gi'
   }
 
   set {

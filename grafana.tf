@@ -10,4 +10,9 @@ resource "helm_release" "grafana" {
   values = [
     file("${path.module}/grafana.yml")
   ]
+
+  set {
+    name  = "ingress.enabled"
+    value = false
+  }
 }
