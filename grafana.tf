@@ -28,7 +28,7 @@ resource "helm_release" "grafana" {
     for_each = var.grafana_ingress_enabled != false ? [1] : []
     content {
       name  = "ingress.hosts"
-      value = jsonencode(var.grafana_ingress_hosts)
+      value = yamlencode(var.grafana_ingress_hosts)
     }
   }
 }
