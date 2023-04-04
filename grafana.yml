@@ -2,14 +2,14 @@ adminUser: opszero
 adminPassword: opszero
 
 datasources:
- datasources.yaml:
-   apiVersion: 1
-   datasources:
-   - name: Prometheus
-     type: prometheus
-     url: http://prometheus-server.prometheus.svc.cluster.local
-     access: proxy
-     isDefault: true
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server.prometheus.svc.cluster.local
+        access: proxy
+        isDefault: true
 
 grafana.ini:
   auth.google:
@@ -29,6 +29,7 @@ grafana.ini:
     %{ endfor }
 
 ingress:
+  ingressClassName: nginx
   enabled: ${INGRESS_ENABLED}
   hosts:
     %{ for host in INGRESS_HOSTS }
