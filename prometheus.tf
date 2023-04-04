@@ -17,9 +17,9 @@ resource "helm_release" "prometheus" {
 
   set {
     name  = "server.persistentVolume.enabled"
-    value = true
+    value = var.prometheus_persistence_storage
   }
-  
+
   ## Prometheus server data Persistent Volume existing claim name
   ## Requires server.persistentVolume.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
