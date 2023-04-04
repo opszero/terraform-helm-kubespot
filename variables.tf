@@ -41,3 +41,33 @@ variable "grafana_enabled" {
   default     = false
   description = "Enable grafana"
 }
+
+variable "grafana_ingress_enabled" {
+  default     = false
+  description = "Enable grafana ingress"
+}
+
+variable "grafana_ingress_hosts" {
+  default     = []
+  description = "Add grafana ingress hosts"
+}
+
+variable "grafana_google_auth_client_id" {
+  default = ""
+  description = "Add Google Auth client id"
+}
+
+variable "grafana_google_auth_client_secret" {
+  default = ""
+  description = "Add Google Auth client secret"
+}
+
+variable "grafana_persistence_storage" {
+  default = false
+  description = "Enable persistence storage for Grafana"
+}
+
+variable "prometheus_persistence_storage" {
+  default = false
+  description = "Enable persistence storage for Prometheus"
+}
