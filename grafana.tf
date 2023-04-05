@@ -20,4 +20,12 @@ resource "helm_release" "grafana" {
     name  = "persistence.enabled"
     value = var.grafana_persistence_storage
   }
+  
+  dynamic "set" {
+    for_each = var.grafana_persistence_storage != false ? [1] : []
+    content {
+      name  = "persistence.storageClassName"
+      value = var.grafana_efs_storage_class_name
+    }
+  }
 }

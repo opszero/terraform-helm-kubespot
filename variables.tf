@@ -66,6 +66,10 @@ variable "grafana_persistence_storage" {
   default     = false
   description = "Enable persistence storage for Grafana"
 }
+variable "grafana_efs_storage_class_name" {
+  default = ""
+  description = "If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed"
+}
 
 variable "prometheus_persistence_storage" {
   default     = false
