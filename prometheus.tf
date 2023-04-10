@@ -45,4 +45,9 @@ resource "helm_release" "prometheus" {
     name  = "alertmanager.persistentVolume.enabled"
     value = false
   }
+
+  set {
+    name  = "prometheus-pushgateway.service.type"
+    value = "LoadBalancer"
+  }
 }
