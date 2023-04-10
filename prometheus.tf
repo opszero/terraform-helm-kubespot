@@ -48,6 +48,6 @@ resource "helm_release" "prometheus" {
 
   set {
     name  = "prometheus-pushgateway.service.type"
-    value = "LoadBalancer"
+    value = var.prometheus_pushgateway_service_type
   }
 }
