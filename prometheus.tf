@@ -20,6 +20,31 @@ resource "helm_release" "prometheus" {
     value = var.prometheus_persistence_storage
   }
 
+  dynamic "set" {
+    for_each = var.pushgateway_ingress_host == [] ? [] : [1]
+    content {
+      name  = "prometheus-pushgateway.enabled"
+      value = true
+    }
+  }
+
+  dynamic "set" {
+    for_each = var.pushgateway_ingress_host == [] ? [] : [1]
+    content {
+      name  = "prometheus-pushgateway.ingress.enabled"
+      value = true
+    }
+
+  }
+
+  dynamic "set" {
+    for_each = var.pushgateway_ingress_host == [] ? [] : [1]
+    content {
+      name  = "prometheus-pushgateway.ingress.hosts"
+      value = var.pushgateway_ingress_host
+    }
+  }
+
   ## Prometheus server data Persistent Volume existing claim name
   ## Requires server.persistentVolume.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
