@@ -68,15 +68,20 @@ variable "grafana_persistence_storage" {
 }
 
 variable "grafana_efs_enable" {
-  default = false
+  default     = false
   description = "Enable EFS storage for Grafana"
 }
 variable "grafana_efs_storage_class_name" {
-  default = ""
+  default     = ""
   description = "If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed"
 }
 
 variable "prometheus_persistence_storage" {
   default     = false
   description = "Enable persistence storage for Prometheus"
+}
+
+variable "prometheus_pushgateway_service_type" {
+  default     = "ClusterIP"
+  description = "Change the service type"
 }
