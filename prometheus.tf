@@ -21,29 +21,21 @@ resource "helm_release" "prometheus" {
   }
 
   dynamic "set" {
-    for_each = var.pushgateway_ingress_host == [] ? [] : [1]
+    for_each = length(var.pushgateway_ingress_host) > 0 ? [
+      {
+        name  = "values"
+        value = templatefile("${path.module}/prometheus.yml", {
+          PUSH_GATEWAY_INGRESS_HOSTS = var.pushgateway_ingress_host
+        })
+      }
+    ] : []
+
     content {
-      name  = "prometheus-pushgateway.enabled"
-      value = true
+      name  = set.value.name
+      value = set.value.value
     }
   }
 
-  dynamic "set" {
-    for_each = var.pushgateway_ingress_host == [] ? [] : [1]
-    content {
-      name  = "prometheus-pushgateway.ingress.enabled"
-      value = true
-    }
-
-  }
-
-  dynamic "set" {
-    for_each = var.pushgateway_ingress_host == [] ? [] : [1]
-    content {
-      name  = "prometheus-pushgateway.ingress.hosts"
-      value = var.pushgateway_ingress_host
-    }
-  }
 
   ## Prometheus server data Persistent Volume existing claim name
   ## Requires server.persistentVolume.enabled: true
