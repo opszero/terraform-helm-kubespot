@@ -81,24 +81,8 @@ variable "prometheus_persistence_storage" {
   description = "Enable persistence storage for Prometheus"
 }
 
-variable "scrape_configs" {
-  type = map(object({
-    job_name       = string
-    static_configs = list(object({
-      targets = list(string)
-    }))
-  }))
-  default = {
-    "prometheus" = {
-      job_name = "prometheus"
-      static_configs = [
-        {
-          targets = [
-            "localhost:9090"
-          ]
-        }
-      ]
-    }
-  }
+variable "prometheus_additional_scrape_configs" {
+  type    = string
+  default = ""
+  description = "Additional scrape config prometheus"
 }
-

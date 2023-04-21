@@ -5,14 +5,7 @@ resource "helm_release" "prometheus" {
   create_namespace = true
   repository       = "https://prometheus-community.github.io/helm-charts"
 
-  values = [
-    {
-      name  = "serverFiles"
-      value = jsonencode({
-        "scrape_configs" = var.additional_scrape_configs_string
-      })
-    }
-  ]
+  values = [var.prometheus_additional_scrape_configs]
 
   set {
     name  = "podSecurityPolicy.enabled"
