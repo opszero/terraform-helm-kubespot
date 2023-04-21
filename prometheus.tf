@@ -5,6 +5,15 @@ resource "helm_release" "prometheus" {
   create_namespace = true
   repository       = "https://prometheus-community.github.io/helm-charts"
 
+  values = [
+    {
+      name  = "serverFiles"
+      value = jsonencode({
+        "scrape_configs" = var.additional_scrape_configs_string
+      })
+    }
+  ]
+
   set {
     name  = "podSecurityPolicy.enabled"
     value = true
@@ -45,4 +54,5 @@ resource "helm_release" "prometheus" {
     name  = "alertmanager.persistentVolume.enabled"
     value = false
   }
+
 }
