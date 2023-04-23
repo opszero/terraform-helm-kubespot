@@ -1,0 +1,12 @@
+%{ for job in SCRAPE_CONFIG }
+serverFiles:
+  prometheus.yml:
+    scrape_configs:
+      - job_name: "${job.job_name}"
+        metrics_path: /metrics
+        static_configs:
+          - targets:
+          %{ for target in job.targets }
+            - "${target}"
+%{ endfor }
+%{ endfor }

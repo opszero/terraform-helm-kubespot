@@ -82,7 +82,10 @@ variable "prometheus_persistence_storage" {
 }
 
 variable "prometheus_additional_scrape_configs" {
-  type    = string
-  default = ""
-  description = "Additional scrape config prometheus"
+  type = list(object({
+    job_name = string
+    targets  = list(string)
+  }))
+  default = []
+  description = "Add additional scrape for configuration for prometheus if needed"
 }

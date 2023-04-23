@@ -5,7 +5,12 @@ resource "helm_release" "prometheus" {
   create_namespace = true
   repository       = "https://prometheus-community.github.io/helm-charts"
 
-  values = [var.prometheus_additional_scrape_configs]
+
+  values = length(var.prometheus_additional_scrape_configs) > 0 ? [
+    templatefile("${path.module}/prometheus_additional_scrape_config.yml", {
+      SCRAPE_CONFIG = var.prometheus_additional_scrape_configs,
+    }),
+  ] : []
 
   set {
     name  = "podSecurityPolicy.enabled"
