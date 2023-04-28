@@ -80,3 +80,8 @@ variable "prometheus_persistence_storage" {
   default     = false
   description = "Enable persistence storage for Prometheus"
 }
+
+variable "pushgateway_ingress_host" {
+  default     = []
+  description = "List of hosts for prometheus push gateway ingress"
+}
