@@ -89,3 +89,8 @@ variable "prometheus_additional_scrape_configs" {
   default = []
   description = "Add additional scrape for configuration for prometheus if needed"
 }
+
+variable "pushgateway_ingress_host" {
+  default     = []
+  description = "List of hosts for prometheus push gateway ingress"
+}
