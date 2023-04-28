@@ -101,6 +101,7 @@ terraform destroy -auto-approve
 | <a name="input_nginx_min_replicas"></a> [nginx\_min\_replicas](#input\_nginx\_min\_replicas) | Minimum number of Nginx Replicas | `number` | `2` | no |
 | <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | Release name for the installed helm chart | `string` | `"nginx"` | no |
 | <a name="input_nginx_yml_file"></a> [nginx\_yml\_file](#input\_nginx\_yml\_file) | n/a | `any` | `null` | no |
+| <a name="input_prometheus_additional_scrape_configs"></a> [prometheus\_additional\_scrape\_configs](#input\_prometheus\_additional\_scrape\_configs) | Add additional scrape for configuration for prometheus if needed | <pre>list(object({<br>    job_name = string<br>    targets  = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_prometheus_persistence_storage"></a> [prometheus\_persistence\_storage](#input\_prometheus\_persistence\_storage) | Enable persistence storage for Prometheus | `bool` | `false` | no |
 | <a name="input_pushgateway_ingress_host"></a> [pushgateway\_ingress\_host](#input\_pushgateway\_ingress\_host) | List of hosts for prometheus push gateway ingress | `list` | `[]` | no |
 ## Resources
