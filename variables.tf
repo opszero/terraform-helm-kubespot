@@ -68,11 +68,11 @@ variable "grafana_persistence_storage" {
 }
 
 variable "grafana_efs_enable" {
-  default = false
+  default     = false
   description = "Enable EFS storage for Grafana"
 }
 variable "grafana_efs_storage_class_name" {
-  default = ""
+  default     = ""
   description = "If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed"
 }
 
@@ -86,7 +86,7 @@ variable "prometheus_additional_scrape_configs" {
     job_name = string
     targets  = list(string)
   }))
-  default = []
+  default     = []
   description = "Add additional scrape for configuration for prometheus if needed"
 }
 

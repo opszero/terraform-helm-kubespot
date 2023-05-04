@@ -30,7 +30,7 @@ resource "helm_release" "prometheus" {
   dynamic "set" {
     for_each = length(var.pushgateway_ingress_host) > 0 ? [
       {
-        name  = "values"
+        name = "values"
         value = templatefile("${path.module}/prometheus.yml", {
           PUSH_GATEWAY_INGRESS_HOSTS = var.pushgateway_ingress_host
         })
