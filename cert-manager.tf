@@ -9,6 +9,10 @@ resource "helm_release" "cert-manager" {
     name  = "installCRDs"
     value = true
   }
+
+  depends_on = [
+    helm_release.nginx
+  ]
 }
 
 locals {
