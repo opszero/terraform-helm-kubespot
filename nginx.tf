@@ -23,8 +23,4 @@ resource "helm_release" "nginx" {
     name  = "controller.keda.maxReplicas"
     value = var.nginx_max_replicas
   }
-
-  depends_on = [
-    helm_release.prometheus,
-  ]
 }
