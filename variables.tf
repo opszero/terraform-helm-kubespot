@@ -94,3 +94,8 @@ variable "pushgateway_ingress_host" {
   default     = []
   description = "List of hosts for prometheus push gateway ingress"
 }
+
+variable "prometheus_enabled" {
+  default = true
+  description = "Enable prometheus"
+}
