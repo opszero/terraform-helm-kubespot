@@ -10,6 +10,11 @@ resource "helm_release" "cert-manager" {
     value = true
   }
 
+  set {
+    name  = "global.leaderElection.namespace"
+    value = var.cert_manager_leader_election_namespace
+  }
+
   depends_on = [
     helm_release.nginx
   ]

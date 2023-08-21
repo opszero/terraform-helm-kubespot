@@ -96,6 +96,11 @@ variable "pushgateway_ingress_host" {
 }
 
 variable "prometheus_enabled" {
-  default = true
+  default     = true
   description = "Enable prometheus"
+}
+
+variable "cert_manager_leader_election_namespace" {
+  default     = "cert-manager"
+  description = "The namespace used for the leader election lease"
 }
