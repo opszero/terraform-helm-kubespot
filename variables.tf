@@ -101,6 +101,6 @@ variable "prometheus_enabled" {
 }
 
 variable "cert_manager_leader_election_namespace" {
-  default     = "cert-manager"
-  description = "The namespace used for the leader election lease"
+  default     = "kube-system"
+  description = "The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot"
 }
