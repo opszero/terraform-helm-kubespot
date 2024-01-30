@@ -40,12 +40,6 @@ spec:
                 port:
                   number: 80
 ```
-## Cert-manager troubleshooting
-
-1. When deploying make sure api startup job completed correctly.
-2. In Some cases there might be issues with network when setting up the cluster, if it's failed try to check
-the webhook pod and check the logs.
-3. cert manager has complete https://cert-manager.io/docs/troubleshooting/webhook/ troubleshooting guide.
 
 # Grafana
 
@@ -92,7 +86,7 @@ terraform destroy -auto-approve
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | Your email address to use for cert manager | `any` | `null` | no |
-| <a name="input_cert_manager_leader_election_namespace"></a> [cert\_manager\_leader\_election\_namespace](#input\_cert\_manager\_leader\_election\_namespace) | The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot | `string` | `"kube-system"` | no |
+| <a name="input_cert_manager_leader_election_namespace"></a> [cert\_manager\_leader\_election\_namespace](#input\_cert\_manager\_leader\_election\_namespace) | The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot | `string` | `"cert-manager"` | no |
 | <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
 | <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
 | <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
