@@ -40,6 +40,12 @@ spec:
                 port:
                   number: 80
 ```
+## Cert-manager troubleshooting
+
+1. When deploying make sure api startup job completed correctly.
+2. In Some cases there might be issues with network when setting up the cluster, if it's failed try to check
+the webhook pod and check the logs.
+3. cert manager has complete https://cert-manager.io/docs/troubleshooting/webhook/ troubleshooting guide.
 
 # Grafana
 
