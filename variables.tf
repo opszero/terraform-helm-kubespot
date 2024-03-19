@@ -96,6 +96,6 @@ variable "pushgateway_ingress_host" {
 }
 
 variable "prometheus_enabled" {
-  default = true
+  default     = true
   description = "Enable prometheus"
 }
