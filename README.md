@@ -68,13 +68,13 @@ terraform destroy -auto-approve
 ```
 # Pro Support
 
-<a href="https://www.opszero.com"><img src="https://assets.opszero.com/images/opszero_11_29_2016.png" width="300px"/></a>
+<a href="https://www.opszero.com"><img src="https://media.opszero.com/insights/brands/logo/2023/04/26/02/04/12/opsZero_logo.svg" width="300px"/></a>
 
 [opsZero provides support](https://www.opszero.com/devops) for our modules including:
 
-- Email support
-- Zoom Calls
-- Implementation Guidance
+-   Slack & Email support
+-   One on One Video Calls
+-   Implementation Guidance
 ## Providers
 
 | Name | Version |
@@ -86,6 +86,7 @@ terraform destroy -auto-approve
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | Your email address to use for cert manager | `any` | `null` | no |
+| <a name="input_cert_manager_leader_election_namespace"></a> [cert\_manager\_leader\_election\_namespace](#input\_cert\_manager\_leader\_election\_namespace) | The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot | `string` | `"cert-manager"` | no |
 | <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
 | <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
 | <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
@@ -102,6 +103,7 @@ terraform destroy -auto-approve
 | <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | Release name for the installed helm chart | `string` | `"nginx"` | no |
 | <a name="input_nginx_yml_file"></a> [nginx\_yml\_file](#input\_nginx\_yml\_file) | n/a | `any` | `null` | no |
 | <a name="input_prometheus_additional_scrape_configs"></a> [prometheus\_additional\_scrape\_configs](#input\_prometheus\_additional\_scrape\_configs) | Add additional scrape for configuration for prometheus if needed | <pre>list(object({<br>    job_name = string<br>    targets  = list(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_prometheus_enabled"></a> [prometheus\_enabled](#input\_prometheus\_enabled) | Enable prometheus | `bool` | `true` | no |
 | <a name="input_prometheus_persistence_storage"></a> [prometheus\_persistence\_storage](#input\_prometheus\_persistence\_storage) | Enable persistence storage for Prometheus | `bool` | `false` | no |
 | <a name="input_pushgateway_ingress_host"></a> [pushgateway\_ingress\_host](#input\_pushgateway\_ingress\_host) | List of hosts for prometheus push gateway ingress | `list` | `[]` | no |
 ## Resources
