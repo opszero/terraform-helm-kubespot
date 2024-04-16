@@ -8,7 +8,6 @@ controller:
     proxy-body-size: "256m"
   proxySetHeaders:
     use-forwarded-headers: "true"
-  allowSnippetAnnotations: true
   stats:
     enabled: true
   metrics:
