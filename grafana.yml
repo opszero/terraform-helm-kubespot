@@ -25,7 +25,7 @@ grafana.ini:
     allowed_domains: ${host}
     hosted_domain: ${host}
     %{ endfor }
-    
+
   server:
     %{ for host in INGRESS_HOSTS }
     domain: ${host}
@@ -41,3 +41,5 @@ ingress:
     - ${host}
     %{ endfor }
   path: "/grafana"
+
+assertNoLeakedSecrets: false
