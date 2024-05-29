@@ -67,6 +67,11 @@ variable "grafana_persistence_storage" {
   description = "Enable persistence storage for Grafana"
 }
 
+variable "grafana_extra_yml" {
+  default     = null
+  description = "Grafana Datasources as Yaml"
+}
+
 variable "grafana_efs_enable" {
   default     = false
   description = "Enable EFS storage for Grafana"
@@ -83,10 +88,10 @@ variable "prometheus_persistence_storage" {
 
 variable "prometheus_additional_scrape_configs" {
   type = list(object({
-    job_name = string
-    targets  = list(string)
+    job_name        = string
+    targets         = list(string)
     scrape_interval = string
-    metrics_path = string
+    metrics_path    = string
   }))
   default     = []
   description = "Add additional scrape for configuration for prometheus if needed"

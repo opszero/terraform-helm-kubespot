@@ -11,6 +11,17 @@ datasources:
         access: proxy
         isDefault: true
 
+sidecar:
+  dashboards:
+    enabled: true
+    defaultFolderName: "General"
+    label: grafana_dashboard
+    labelValue: "1"
+    folderAnnotation: grafana_folder
+    searchNamespace: ALL
+    provider:
+      foldersFromFilesStructure: true
+
 grafana.ini:
   auth.google:
     enabled: true
