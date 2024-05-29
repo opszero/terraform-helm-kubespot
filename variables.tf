@@ -85,6 +85,8 @@ variable "prometheus_additional_scrape_configs" {
   type = list(object({
     job_name = string
     targets  = list(string)
+    scrape_interval = string
+    metrics_path = string
   }))
   default     = []
   description = "Add additional scrape for configuration for prometheus if needed"
