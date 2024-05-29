@@ -14,7 +14,7 @@ resource "helm_release" "grafana" {
       INGRESS_ENABLED      = var.grafana_ingress_enabled,
       INGRESS_HOSTS        = var.grafana_ingress_hosts,
     }),
-    var.grafana_extra_yml != null ? file(var.grafana_extra_yml) : null,
+    var.grafana_extra_yml != null ? var.grafana_extra_yml : null,
   ]
 
   set {
