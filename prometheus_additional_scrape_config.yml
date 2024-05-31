@@ -1,4 +1,4 @@
-extraScrapeConfigs:
+extraScrapeConfigs: |
   %{ for job in SCRAPE_CONFIG }
   - job_name: "${job.job_name}"
     scrape_interval: "${job.scrape_interval}"
