@@ -4,6 +4,7 @@ resource "helm_release" "cert-manager" {
   chart            = "cert-manager"
   namespace        = "cert-manager"
   create_namespace = true
+  version          = var.cert_manager_version
 
   set {
     name  = "installCRDs"
@@ -16,23 +17,20 @@ resource "helm_release" "cert-manager" {
   }
 
   dynamic "set" {
-      for_each = var.cert_manager_resources != null ? [1] : []
-  
-      content {
-        name = "global.resources"
-  
-        value = jsonencode({
-          requests = {
-            cpu    = var.cert_manager_resources.requests.cpu
-            memory = var.cert_manager_resources.requests.memory
-          }
-          limits = {
-            cpu    = var.cert_manager_resources.limits.cpu
-            memory = var.cert_manager_resources.limits.memory
-          }
-        })
-      }
+    for_each = var.resources != null ? tomap(var.resources) : {}
+    content {
+      name  = "global.resources.${set.key}.cpu"
+      value = try(set.value.cpu, null)
     }
+  }
+
+  dynamic "set" {
+    for_each = var.resources != null ? tomap(var.resources) : {}
+    content {
+      name  = "global.resources.${set.key}.memory"
+      value = try(set.value.memory, null)
+    }
+  }
 
   depends_on = [
     helm_release.nginx
