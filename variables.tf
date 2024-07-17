@@ -111,3 +111,17 @@ variable "cert_manager_leader_election_namespace" {
   default     = "cert-manager"
   description = "The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot"
 }
+
+variable "cert_manager_resources" {
+  type = object({
+    requests = object({
+      cpu    = string
+      memory = string
+    })
+    limits = object({
+      cpu    = string
+      memory = string
+    })
+  })
+  default = null
+}

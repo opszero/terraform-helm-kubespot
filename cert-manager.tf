@@ -15,6 +15,25 @@ resource "helm_release" "cert-manager" {
     value = var.cert_manager_leader_election_namespace
   }
 
+  dynamic "set" {
+      for_each = var.cert_manager_resources != null ? [1] : []
+  
+      content {
+        name = "global.resources"
+  
+        value = jsonencode({
+          requests = {
+            cpu    = var.cert_manager_resources.requests.cpu
+            memory = var.cert_manager_resources.requests.memory
+          }
+          limits = {
+            cpu    = var.cert_manager_resources.limits.cpu
+            memory = var.cert_manager_resources.limits.memory
+          }
+        })
+      }
+    }
+
   depends_on = [
     helm_release.nginx
   ]
