@@ -66,15 +66,6 @@ terraform apply -auto-approve
 ```sh
 terraform destroy -auto-approve
 ```
-# Pro Support
-
-<a href="https://www.opszero.com"><img src="https://media.opszero.com/insights/brands/logo/2023/04/26/02/04/12/opsZero_logo.svg" width="300px"/></a>
-
-[opsZero provides support](https://www.opszero.com/devops) for our modules including:
-
--   Slack & Email support
--   One on One Video Calls
--   Implementation Guidance
 ## Providers
 
 | Name | Version |
@@ -87,12 +78,14 @@ terraform destroy -auto-approve
 |------|-------------|------|---------|:--------:|
 | <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | Your email address to use for cert manager | `any` | `null` | no |
 | <a name="input_cert_manager_leader_election_namespace"></a> [cert\_manager\_leader\_election\_namespace](#input\_cert\_manager\_leader\_election\_namespace) | The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot | `string` | `"cert-manager"` | no |
+| <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | n/a | `string` | `"1.15.1"` | no |
 | <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
 | <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
 | <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
 | <a name="input_grafana_efs_enable"></a> [grafana\_efs\_enable](#input\_grafana\_efs\_enable) | Enable EFS storage for Grafana | `bool` | `false` | no |
 | <a name="input_grafana_efs_storage_class_name"></a> [grafana\_efs\_storage\_class\_name](#input\_grafana\_efs\_storage\_class\_name) | If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed | `string` | `""` | no |
 | <a name="input_grafana_enabled"></a> [grafana\_enabled](#input\_grafana\_enabled) | Enable grafana | `bool` | `false` | no |
+| <a name="input_grafana_extra_yml"></a> [grafana\_extra\_yml](#input\_grafana\_extra\_yml) | Grafana Datasources as Yaml | `any` | `null` | no |
 | <a name="input_grafana_google_auth_client_id"></a> [grafana\_google\_auth\_client\_id](#input\_grafana\_google\_auth\_client\_id) | Add Google Auth client id | `string` | `""` | no |
 | <a name="input_grafana_google_auth_client_secret"></a> [grafana\_google\_auth\_client\_secret](#input\_grafana\_google\_auth\_client\_secret) | Add Google Auth client secret | `string` | `""` | no |
 | <a name="input_grafana_ingress_enabled"></a> [grafana\_ingress\_enabled](#input\_grafana\_ingress\_enabled) | Enable grafana ingress | `bool` | `false` | no |
@@ -102,10 +95,11 @@ terraform destroy -auto-approve
 | <a name="input_nginx_min_replicas"></a> [nginx\_min\_replicas](#input\_nginx\_min\_replicas) | Minimum number of Nginx Replicas | `number` | `2` | no |
 | <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | Release name for the installed helm chart | `string` | `"nginx"` | no |
 | <a name="input_nginx_yml_file"></a> [nginx\_yml\_file](#input\_nginx\_yml\_file) | n/a | `any` | `null` | no |
-| <a name="input_prometheus_additional_scrape_configs"></a> [prometheus\_additional\_scrape\_configs](#input\_prometheus\_additional\_scrape\_configs) | Add additional scrape for configuration for prometheus if needed | <pre>list(object({<br>    job_name = string<br>    targets  = list(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_prometheus_additional_scrape_configs"></a> [prometheus\_additional\_scrape\_configs](#input\_prometheus\_additional\_scrape\_configs) | Add additional scrape for configuration for prometheus if needed | <pre>list(object({<br>    job_name        = string<br>    targets         = list(string)<br>    scrape_interval = string<br>    metrics_path    = string<br>  }))</pre> | `[]` | no |
 | <a name="input_prometheus_enabled"></a> [prometheus\_enabled](#input\_prometheus\_enabled) | Enable prometheus | `bool` | `true` | no |
 | <a name="input_prometheus_persistence_storage"></a> [prometheus\_persistence\_storage](#input\_prometheus\_persistence\_storage) | Enable persistence storage for Prometheus | `bool` | `false` | no |
 | <a name="input_pushgateway_ingress_host"></a> [pushgateway\_ingress\_host](#input\_pushgateway\_ingress\_host) | List of hosts for prometheus push gateway ingress | `list` | `[]` | no |
+| <a name="input_resources"></a> [resources](#input\_resources) | n/a | <pre>map(object({<br>    cpu    = string<br>    memory = string<br>  }))</pre> | `null` | no |
 ## Resources
 
 | Name | Type |
@@ -120,4 +114,35 @@ terraform destroy -auto-approve
 ## Outputs
 
 No outputs.
+# 🚀 Built by opsZero!
+
+<a href="https://opszero.com"><img src="https://opszero.com/wp-content/uploads/2024/07/opsZero_logo_svg.svg" width="300px"/></a>
+
+Since 2016 [opsZero](https://opszero.com) has been providing Kubernetes
+expertise to companies of all sizes on any Cloud. With a focus on AI and
+Compliance we can say we seen it all whether SOC2, HIPAA, PCI-DSS, ITAR,
+FedRAMP, CMMC we have you and your customers covered.
+
+We provide support to organizations in the following ways:
+
+- [Modernize or Migrate to Kubernetes](https://opszero.com/solutions/modernization/)
+- [Cloud Infrastructure with Kubernetes on AWS, Azure, Google Cloud, or Bare Metal](https://opszero.com/solutions/cloud-infrastructure/)
+- [Building AI and Data Pipelines on Kubernetes](https://opszero.com/solutions/ai/)
+- [Optimizing Existing Kubernetes Workloads](https://opszero.com/solutions/optimized-workloads/)
+
+We do this with a high-touch support model where you:
+
+- Get access to us on Slack, Microsoft Teams or Email
+- Get 24/7 coverage of your infrastructure
+- Get an accelerated migration to Kubernetes
+
+Please [schedule a call](https://calendly.com/opszero-llc/discovery) if you need support.
+
+<br/><br/>
+
+<div style="display: block">
+  <img src="https://opszero.com/wp-content/uploads/2024/07/aws-advanced.png" width="150px" />
+  <img src="https://opszero.com/wp-content/uploads/2024/07/AWS-public-sector.png" width="150px" />
+  <img src="https://opszero.com/wp-content/uploads/2024/07/AWS-eks.png" width="150px" />
+</div>
 <!-- END_TF_DOCS -->
