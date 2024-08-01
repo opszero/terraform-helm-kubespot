@@ -121,5 +121,5 @@ variable "resources" {
 }
 
 variable "cert_manager_version" {
-  default = "1.13.3"
+  default = "1.15.1"
 }
