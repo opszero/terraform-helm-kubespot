@@ -42,6 +42,16 @@ variable "grafana_enabled" {
   description = "Enable grafana"
 }
 
+variable "grafana_admin_user" {
+  default     = "opszero"
+  description = "The User name of Grafana for login Dashboard"
+}
+
+variable "grafana_admin_password" {
+  default     = ""
+  description = "The Password of Grafana for login Dashboard"
+}
+
 variable "grafana_ingress_enabled" {
   default     = false
   description = "Enable grafana ingress"
@@ -117,7 +127,7 @@ variable "resources" {
     cpu    = string
     memory = string
   }))
-  default = null  # You can set a default value if needed
+  default = null # You can set a default value if needed
 }
 
 variable "cert_manager_version" {

@@ -1,3 +1,9 @@
+resource "random_password" "grafana_admin_password" {
+  count   = var.grafana_enabled && var.adminPassword == "" ? 1 : 0
+  length  = 16
+  special = true
+}
+
 resource "helm_release" "grafana" {
   count = var.grafana_enabled ? 1 : 0
 
@@ -20,6 +26,17 @@ resource "helm_release" "grafana" {
   set {
     name  = "persistence.enabled"
     value = var.grafana_persistence_storage
+  }
+
+  set {
+    name  = "adminUser"
+    value = var.grafana_admin_user
+  }
+
+  set {
+    name  = "adminPassword"
+    value = var.grafana_admin_password != "" ? var.grafana_admin_password : random_password.grafana_admin_password[0].result
+
   }
 
   dynamic "set" {
