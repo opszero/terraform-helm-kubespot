@@ -4,6 +4,7 @@ resource "random_password" "grafana_admin_password" {
   special = true
 }
 
+
 resource "helm_release" "grafana" {
   count = var.grafana_enabled ? 1 : 0
 
