@@ -72,6 +72,7 @@ terraform destroy -auto-approve
 |------|---------|
 | <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -82,6 +83,8 @@ terraform destroy -auto-approve
 | <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
 | <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
 | <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
+| <a name="input_grafana_admin_password"></a> [grafana\_admin\_password](#input\_grafana\_admin\_password) | The Password of Grafana for login Dashboard | `string` | `""` | no |
+| <a name="input_grafana_admin_user"></a> [grafana\_admin\_user](#input\_grafana\_admin\_user) | The User name of Grafana for login Dashboard | `string` | `"opszero"` | no |
 | <a name="input_grafana_efs_enable"></a> [grafana\_efs\_enable](#input\_grafana\_efs\_enable) | Enable EFS storage for Grafana | `bool` | `false` | no |
 | <a name="input_grafana_efs_storage_class_name"></a> [grafana\_efs\_storage\_class\_name](#input\_grafana\_efs\_storage\_class\_name) | If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed | `string` | `""` | no |
 | <a name="input_grafana_enabled"></a> [grafana\_enabled](#input\_grafana\_enabled) | Enable grafana | `bool` | `false` | no |
@@ -111,9 +114,12 @@ terraform destroy -auto-approve
 | [helm_release.nginx](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.prometheus](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [null_resource.cert-manager-cluster-issuer](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [random_password.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_grafana_admin_password"></a> [grafana\_admin\_password](#output\_grafana\_admin\_password) | n/a |
 # 🚀 Built by opsZero!
 
 <a href="https://opszero.com"><img src="https://opszero.com/wp-content/uploads/2024/07/opsZero_logo_svg.svg" width="300px"/></a>
