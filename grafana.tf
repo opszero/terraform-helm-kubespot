@@ -1,5 +1,5 @@
 resource "random_password" "grafana_admin_password" {
-  count   = var.grafana_enabled && var.adminPassword == "" ? 1 : 0
+  count   = var.grafana_enabled && var.grafana_admin_password == "" ? 1 : 0
   length  = 16
   special = true
 }
