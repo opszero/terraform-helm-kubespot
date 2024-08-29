@@ -8,6 +8,15 @@ datasources:
         access: proxy
         isDefault: true
 
+      # Additional datasources from Terraform
+      %{ for ds in datasources }
+      - name: "${ds.name}"
+        type: "${ds.type}"
+        url: "${ds.url}"
+        access: "${ds.access}"
+        isDefault: ${ds.isDefault}
+      %{ endfor }
+
 sidecar:
   dashboards:
     enabled: true

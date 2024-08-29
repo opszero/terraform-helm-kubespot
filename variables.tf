@@ -133,3 +133,29 @@ variable "resources" {
 variable "cert_manager_version" {
   default = "1.15.1"
 }
+
+variable "grafana_datasources" {
+  type = list(object({
+    name      = string
+    type      = string
+    url       = string
+    access    = string
+    isDefault = bool
+  }))
+  default = [
+#     {
+#       name      = "Postgres"
+#       type      = "postgres"
+#       url       = "postgresql://user:password@postgres-server.database.svc.cluster.local:5432/dbname"
+#       access    = "proxy"
+#       isDefault = false
+#     },
+#     {
+#       name      = "Loki"
+#       type      = "loki"
+#       url       = "http://loki-server.loki.svc.cluster.local"
+#       access    = "proxy"
+#       isDefault = false # This should be false
+#     }
+  ]
+}
