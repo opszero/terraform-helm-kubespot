@@ -144,18 +144,11 @@ variable "grafana_datasources" {
   }))
   default = [
     {
-      name      = "Prometheus1"
-      type      = "prometheus"
-      url       = "http://prometheus-server.prometheus.svc.cluster.local"
+      name      = "Postgres"
+      type      = "postgres"
+      url       = "postgresql://user:password@postgres-server.database.svc.cluster.local:5432/dbname"
       access    = "proxy"
-      isDefault = true # Only this one should be true
-    },
-    {
-      name      = "Prometheus2"
-      type      = "prometheus"
-      url       = "http://xyz.prometheus.svc.cluster.local"
-      access    = "proxy"
-      isDefault = false # This should be false
+      isDefault = false
     },
     {
       name      = "Loki"

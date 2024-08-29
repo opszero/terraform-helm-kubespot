@@ -2,6 +2,13 @@ datasources:
   datasources.yaml:
     apiVersion: 1
     datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server.prometheus.svc.cluster.local
+        access: proxy
+        isDefault: true
+
+      # Additional datasources from Terraform
       %{ for ds in datasources }
       - name: "${ds.name}"
         type: "${ds.type}"
