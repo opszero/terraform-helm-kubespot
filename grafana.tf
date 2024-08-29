@@ -20,8 +20,9 @@ resource "helm_release" "grafana" {
       GOOGLE_CLIENT_SECRET = var.grafana_google_auth_client_secret,
       INGRESS_ENABLED      = var.grafana_ingress_enabled,
       INGRESS_HOSTS        = var.grafana_ingress_hosts,
+      datasources          = var.grafana_datasources,
     }),
-    var.grafana_extra_yml != null ? var.grafana_extra_yml : null,
+    var.grafana_extra_yml != null ? var.grafana_extra_yml : ""
   ]
 
   set {

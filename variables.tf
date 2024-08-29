@@ -133,3 +133,36 @@ variable "resources" {
 variable "cert_manager_version" {
   default = "1.15.1"
 }
+
+variable "grafana_datasources" {
+  type = list(object({
+    name      = string
+    type      = string
+    url       = string
+    access    = string
+    isDefault = bool
+  }))
+  default = [
+    {
+      name      = "Prometheus1"
+      type      = "prometheus"
+      url       = "http://prometheus-server.prometheus.svc.cluster.local"
+      access    = "proxy"
+      isDefault = true # Only this one should be true
+    },
+    {
+      name      = "Prometheus2"
+      type      = "prometheus"
+      url       = "http://xyz.prometheus.svc.cluster.local"
+      access    = "proxy"
+      isDefault = false # This should be false
+    },
+    {
+      name      = "Loki"
+      type      = "loki"
+      url       = "http://loki-server.loki.svc.cluster.local"
+      access    = "proxy"
+      isDefault = false # This should be false
+    }
+  ]
+}
