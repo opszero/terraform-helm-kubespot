@@ -159,3 +159,14 @@ variable "grafana_datasources" {
 #     }
   ]
 }
+
+#loki
+
+variable "loki_yml_file" {
+  default = null
+}
+
+variable "grafana_loki_enabled" {
+  default     = false
+  description = "Enable grafana loki"
+}

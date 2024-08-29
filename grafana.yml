@@ -8,6 +8,15 @@ datasources:
         access: proxy
         isDefault: true
 
+      %{ if grafana_loki_enabled }
+      - name: Loki
+        type: loki
+        url: http://loki.loki.svc.cluster.local
+        access: proxy
+        isDefault: false
+      %{ endif %}
+
+
       # Additional datasources from Terraform
       %{ for ds in datasources }
       - name: "${ds.name}"
