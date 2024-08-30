@@ -14,8 +14,7 @@ datasources:
         url: http://loki.loki.svc.cluster.local
         access: proxy
         isDefault: false
-      %{ endif %}
-
+      %{ endif }
 
       # Additional datasources from Terraform
       %{ for ds in datasources }
