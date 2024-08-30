@@ -9,3 +9,11 @@ loki:
     query_timeout: 300s
     volume_enabled: true
 
+    storage:
+      type: "s3"
+      s3:
+        region: eu-central-1
+      bucketNames:
+        chunks: <bucket name>
+        ruler: <bucket name>
+        admin: <bucket name>
