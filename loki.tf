@@ -7,7 +7,7 @@ resource "random_password" "s3_loki_name" {
 
 # Create an S3 bucket
 resource "aws_s3_bucket" "s3_loki" {
-  bucket = "loki-${random_password.s3_loki_name[0].result}"
+  bucket = "grafana-loki-${random_password.s3_loki_name[0].result}"
 }
 
 
