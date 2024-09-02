@@ -170,3 +170,57 @@ variable "grafana_loki_enabled" {
   default     = false
   description = "Enable grafana loki"
 }
+
+variable "s3_bucket_prefix" {
+  type        = string
+  default     = "grafana-loki"
+  description = "Prefix for the S3 bucket name"
+}
+
+variable "kms_key_description" {
+  type        = string
+  default     = "KMS key for encrypting S3 bucket for Grafana Loki"
+  description = "Description for the KMS key used for S3 encryption"
+}
+
+variable "kms_alias_name" {
+  type        = string
+  default     = "alias/grafana-loki-key"
+  description = "Alias name for the KMS key"
+}
+
+variable "s3_logging_prefix" {
+  type        = string
+  default     = "log/"
+  description = "Prefix for the S3 bucket logging"
+}
+
+variable "enable_key_rotation" {
+  type        = bool
+  default     = true
+  description = "Enable or disable KMS key rotation"
+}
+
+variable "block_public_acls" {
+  type        = bool
+  default     = true
+  description = "Whether Amazon S3 should block public ACLs for this bucket."
+}
+
+variable "block_public_policy" {
+  type        = bool
+  default     = true
+  description = "Whether Amazon S3 should block public bucket policies for this bucket."
+}
+
+variable "ignore_public_acls" {
+  type        = bool
+  default     = true
+  description = "Whether Amazon S3 should ignore public ACLs for this bucket."
+}
+
+variable "restrict_public_buckets" {
+  type        = bool
+  default     = true
+  description = "Whether Amazon S3 should restrict public bucket policies for this bucket."
+}
