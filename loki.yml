@@ -11,7 +11,7 @@ loki:
   storage:
     type: "s3"
     s3:
-      region: eu-central-1
+      region: ${s3_bucket_region}
     bucketNames:
       chunks: "${s3_bucket}"
       ruler: "${s3_bucket}"

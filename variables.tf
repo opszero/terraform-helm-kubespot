@@ -125,7 +125,7 @@ variable "grafana_loki_yml_file" {
 
 variable "grafana_loki_bucket_name" {
   type        = string
-  default     = "s3-grafana-loki"
+  default     = ""
   description = "Name for the S3 bucket"
 }
 
