@@ -91,49 +91,6 @@ variable "grafana_efs_storage_class_name" {
   description = "If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed"
 }
 
-variable "prometheus_persistence_storage" {
-  default     = false
-  description = "Enable persistence storage for Prometheus"
-}
-
-variable "prometheus_additional_scrape_configs" {
-  type = list(object({
-    job_name        = string
-    targets         = list(string)
-    scrape_interval = string
-    metrics_path    = string
-  }))
-  default     = []
-  description = "Add additional scrape for configuration for prometheus if needed"
-}
-
-variable "pushgateway_ingress_host" {
-  default     = []
-  description = "List of hosts for prometheus push gateway ingress"
-}
-
-variable "prometheus_enabled" {
-  default     = true
-  description = "Enable prometheus"
-}
-
-variable "cert_manager_leader_election_namespace" {
-  default     = "cert-manager"
-  description = "The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot"
-}
-
-variable "resources" {
-  type = map(object({
-    cpu    = string
-    memory = string
-  }))
-  default = null # You can set a default value if needed
-}
-
-variable "cert_manager_version" {
-  default = "1.15.1"
-}
-
 variable "grafana_datasources" {
   type = list(object({
     name      = string
@@ -175,4 +132,48 @@ variable "grafana_loki_bucket_name" {
 variable "grafana_loki_enabled" {
   default     = false
   description = "Enable grafana loki"
+}
+
+
+variable "prometheus_persistence_storage" {
+  default     = false
+  description = "Enable persistence storage for Prometheus"
+}
+
+variable "prometheus_additional_scrape_configs" {
+  type = list(object({
+    job_name        = string
+    targets         = list(string)
+    scrape_interval = string
+    metrics_path    = string
+  }))
+  default     = []
+  description = "Add additional scrape for configuration for prometheus if needed"
+}
+
+variable "pushgateway_ingress_host" {
+  default     = []
+  description = "List of hosts for prometheus push gateway ingress"
+}
+
+variable "prometheus_enabled" {
+  default     = true
+  description = "Enable prometheus"
+}
+
+variable "cert_manager_leader_election_namespace" {
+  default     = "cert-manager"
+  description = "The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot"
+}
+
+variable "cert_manager_resources" {
+  type = map(object({
+    cpu    = string
+    memory = string
+  }))
+  default = null # You can set a default value if needed
+}
+
+variable "cert_manager_version" {
+  default = "1.15.1"
 }

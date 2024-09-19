@@ -17,7 +17,7 @@ resource "helm_release" "cert-manager" {
   }
 
   dynamic "set" {
-    for_each = var.resources != null ? tomap(var.resources) : {}
+    for_each = var.cert_manager_resources != null ? tomap(var.cert_manager_resources) : {}
     content {
       name  = "global.resources.${set.key}.cpu"
       value = try(set.value.cpu, null)
@@ -25,7 +25,7 @@ resource "helm_release" "cert-manager" {
   }
 
   dynamic "set" {
-    for_each = var.resources != null ? tomap(var.resources) : {}
+    for_each = var.cert_manager_resources != null ? tomap(var.cert_manager_resources) : {}
     content {
       name  = "global.resources.${set.key}.memory"
       value = try(set.value.memory, null)
