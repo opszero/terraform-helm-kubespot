@@ -46,7 +46,7 @@ resource "helm_release" "loki" {
     var.grafana_loki_yml_file != null ? var.grafana_loki_yml_file : templatefile("${path.module}/loki.yml", {
       s3_bucket        = join("", aws_s3_bucket.s3_loki.*.bucket),
       s3_bucket_region = join("", aws_s3_bucket.s3_loki.*.region),
-      storage_class    = var.var.storage_class
+      storage_class    = var.storage_class
     }),
   ]
 }
