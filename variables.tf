@@ -180,3 +180,7 @@ variable "cert_manager_resources" {
 variable "cert_manager_version" {
   default = "1.15.1"
 }
+
+variable "kubecost_enabled" {
+  default = false
+}
