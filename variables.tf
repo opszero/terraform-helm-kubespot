@@ -143,36 +143,19 @@ variable "grafana_datasources" {
     isDefault = bool
   }))
   default = [
-    #     {
-    #       name      = "Postgres"
-    #       type      = "postgres"
-    #       url       = "postgresql://user:password@postgres-server.database.svc.cluster.local:5432/dbname"
-    #       access    = "proxy"
-    #       isDefault = false
-    #     },
-    #     {
-    #       name      = "Loki"
-    #       type      = "loki"
-    #       url       = "http://loki-server.loki.svc.cluster.local"
-    #       access    = "proxy"
-    #       isDefault = false # This should be false
-    #     }
+#     {
+#       name      = "Postgres"
+#       type      = "postgres"
+#       url       = "postgresql://user:password@postgres-server.database.svc.cluster.local:5432/dbname"
+#       access    = "proxy"
+#       isDefault = false
+#     },
+#     {
+#       name      = "Loki"
+#       type      = "loki"
+#       url       = "http://loki-server.loki.svc.cluster.local"
+#       access    = "proxy"
+#       isDefault = false # This should be false
+#     }
   ]
-}
-
-#loki
-
-variable "grafana_loki_yml_file" {
-  default = null
-}
-
-variable "grafana_loki_bucket_name" {
-  type        = string
-  default     = "s3-grafana-loki"
-  description = "Name for the S3 bucket"
-}
-
-variable "grafana_loki_enabled" {
-  default     = false
-  description = "Enable grafana loki"
 }

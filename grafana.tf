@@ -21,7 +21,6 @@ resource "helm_release" "grafana" {
       INGRESS_ENABLED      = var.grafana_ingress_enabled,
       INGRESS_HOSTS        = var.grafana_ingress_hosts,
       datasources          = var.grafana_datasources,
-      grafana_loki_enabled = var.grafana_loki_enabled,
     }),
     var.grafana_extra_yml != null ? var.grafana_extra_yml : ""
   ]
