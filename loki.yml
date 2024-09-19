@@ -38,3 +38,21 @@ loki:
 
 minio:
   enabled: false
+
+
+write:
+  persistence:
+    storageClass: ${storage_class}
+
+read:
+  persistence:
+    storageClass: ${storage_class}
+
+backend:
+  persistence:
+    storageClass: ${storage_class}
+
+chunksCache:
+  persistence:
+    storageClass: ${storage_class}
+

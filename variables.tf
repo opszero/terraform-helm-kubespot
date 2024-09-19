@@ -1,3 +1,8 @@
+variable "storage_class" {
+  default     = "gp2"
+  description = "Storage Class to use for Persistence"
+}
+
 variable "nginx_name" {
   default     = "nginx"
   description = "Release name for the installed helm chart"
@@ -118,6 +123,10 @@ variable "grafana_datasources" {
 }
 
 #loki
+variable "grafana_loki_enabled" {
+  default     = false
+  description = "Enable grafana loki"
+}
 
 variable "grafana_loki_yml_file" {
   default = null
@@ -128,12 +137,6 @@ variable "grafana_loki_bucket_name" {
   default     = ""
   description = "Name for the S3 bucket"
 }
-
-variable "grafana_loki_enabled" {
-  default     = false
-  description = "Enable grafana loki"
-}
-
 
 variable "prometheus_persistence_storage" {
   default     = false
