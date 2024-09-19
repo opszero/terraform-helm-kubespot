@@ -1,5 +1,4 @@
 <!-- BEGIN_TF_DOCS -->
-
 # Kubespot (Helm)
 
 - cert-manager
@@ -69,76 +68,73 @@ terraform apply -auto-approve
 ```sh
 terraform destroy -auto-approve
 ```
-
 ## Providers
 
-| Name                                                      | Version |
-| --------------------------------------------------------- | ------- |
-| <a name="provider_aws"></a> [aws](#provider_aws)          | n/a     |
-| <a name="provider_helm"></a> [helm](#provider_helm)       | n/a     |
-| <a name="provider_null"></a> [null](#provider_null)       | n/a     |
-| <a name="provider_random"></a> [random](#provider_random) | n/a     |
-
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
+| <a name="provider_null"></a> [null](#provider\_null) | n/a |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
 ## Inputs
 
-| Name                                                                                                                                                | Description                                                                                | Type                                                                                                                                     | Default          | Required |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | :------: |
-| <a name="input_cert_manager_email"></a> [cert_manager_email](#input_cert_manager_email)                                                             | Your email address to use for cert manager                                                 | `any`                                                                                                                                    | `null`           |    no    |
-| <a name="input_cert_manager_leader_election_namespace"></a> [cert_manager_leader_election_namespace](#input_cert_manager_leader_election_namespace) | The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot | `string`                                                                                                                                 | `"cert-manager"` |    no    |
-| <a name="input_cert_manager_resources"></a> [cert_manager_resources](#input_cert_manager_resources)                                                 | n/a                                                                                        | <pre>map(object({<br> cpu = string<br> memory = string<br> }))</pre>                                                                     | `null`           |    no    |
-| <a name="input_cert_manager_version"></a> [cert_manager_version](#input_cert_manager_version)                                                       | n/a                                                                                        | `string`                                                                                                                                 | `"1.15.1"`       |    no    |
-| <a name="input_datadog_api_key"></a> [datadog_api_key](#input_datadog_api_key)                                                                      | The API key for datadog                                                                    | `string`                                                                                                                                 | `""`             |    no    |
-| <a name="input_datadog_values"></a> [datadog_values](#input_datadog_values)                                                                         | Values for datadog helm chart                                                              | `string`                                                                                                                                 | `""`             |    no    |
-| <a name="input_datadog_values_extra"></a> [datadog_values_extra](#input_datadog_values_extra)                                                       | List of extra values for datadog helm chart                                                | `list`                                                                                                                                   | `[]`             |    no    |
-| <a name="input_grafana_admin_password"></a> [grafana_admin_password](#input_grafana_admin_password)                                                 | The Password of Grafana for login Dashboard                                                | `string`                                                                                                                                 | `""`             |    no    |
-| <a name="input_grafana_admin_user"></a> [grafana_admin_user](#input_grafana_admin_user)                                                             | The User name of Grafana for login Dashboard                                               | `string`                                                                                                                                 | `"opszero"`      |    no    |
-| <a name="input_grafana_datasources"></a> [grafana_datasources](#input_grafana_datasources)                                                          | n/a                                                                                        | <pre>list(object({<br> name = string<br> type = string<br> url = string<br> access = string<br> isDefault = bool<br> }))</pre>           | `[]`             |    no    |
-| <a name="input_grafana_efs_enable"></a> [grafana_efs_enable](#input_grafana_efs_enable)                                                             | Enable EFS storage for Grafana                                                             | `bool`                                                                                                                                   | `false`          |    no    |
-| <a name="input_grafana_efs_storage_class_name"></a> [grafana_efs_storage_class_name](#input_grafana_efs_storage_class_name)                         | If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed         | `string`                                                                                                                                 | `""`             |    no    |
-| <a name="input_grafana_enabled"></a> [grafana_enabled](#input_grafana_enabled)                                                                      | Enable grafana                                                                             | `bool`                                                                                                                                   | `false`          |    no    |
-| <a name="input_grafana_extra_yml"></a> [grafana_extra_yml](#input_grafana_extra_yml)                                                                | Grafana Datasources as Yaml                                                                | `any`                                                                                                                                    | `null`           |    no    |
-| <a name="input_grafana_google_auth_client_id"></a> [grafana_google_auth_client_id](#input_grafana_google_auth_client_id)                            | Add Google Auth client id                                                                  | `string`                                                                                                                                 | `""`             |    no    |
-| <a name="input_grafana_google_auth_client_secret"></a> [grafana_google_auth_client_secret](#input_grafana_google_auth_client_secret)                | Add Google Auth client secret                                                              | `string`                                                                                                                                 | `""`             |    no    |
-| <a name="input_grafana_ingress_enabled"></a> [grafana_ingress_enabled](#input_grafana_ingress_enabled)                                              | Enable grafana ingress                                                                     | `bool`                                                                                                                                   | `false`          |    no    |
-| <a name="input_grafana_ingress_hosts"></a> [grafana_ingress_hosts](#input_grafana_ingress_hosts)                                                    | Add grafana ingress hosts                                                                  | `list`                                                                                                                                   | `[]`             |    no    |
-| <a name="input_grafana_loki_bucket_name"></a> [grafana_loki_bucket_name](#input_grafana_loki_bucket_name)                                           | Name for the S3 bucket                                                                     | `string`                                                                                                                                 | `""`             |    no    |
-| <a name="input_grafana_loki_enabled"></a> [grafana_loki_enabled](#input_grafana_loki_enabled)                                                       | Enable grafana loki                                                                        | `bool`                                                                                                                                   | `false`          |    no    |
-| <a name="input_grafana_loki_yml_file"></a> [grafana_loki_yml_file](#input_grafana_loki_yml_file)                                                    | n/a                                                                                        | `any`                                                                                                                                    | `null`           |    no    |
-| <a name="input_grafana_persistence_storage"></a> [grafana_persistence_storage](#input_grafana_persistence_storage)                                  | Enable persistence storage for Grafana                                                     | `bool`                                                                                                                                   | `false`          |    no    |
-| <a name="input_nginx_max_replicas"></a> [nginx_max_replicas](#input_nginx_max_replicas)                                                             | Maximum number of Nginx Replicas                                                           | `number`                                                                                                                                 | `11`             |    no    |
-| <a name="input_nginx_min_replicas"></a> [nginx_min_replicas](#input_nginx_min_replicas)                                                             | Minimum number of Nginx Replicas                                                           | `number`                                                                                                                                 | `2`              |    no    |
-| <a name="input_nginx_name"></a> [nginx_name](#input_nginx_name)                                                                                     | Release name for the installed helm chart                                                  | `string`                                                                                                                                 | `"nginx"`        |    no    |
-| <a name="input_nginx_yml_file"></a> [nginx_yml_file](#input_nginx_yml_file)                                                                         | n/a                                                                                        | `any`                                                                                                                                    | `null`           |    no    |
-| <a name="input_prometheus_additional_scrape_configs"></a> [prometheus_additional_scrape_configs](#input_prometheus_additional_scrape_configs)       | Add additional scrape for configuration for prometheus if needed                           | <pre>list(object({<br> job_name = string<br> targets = list(string)<br> scrape_interval = string<br> metrics_path = string<br> }))</pre> | `[]`             |    no    |
-| <a name="input_prometheus_enabled"></a> [prometheus_enabled](#input_prometheus_enabled)                                                             | Enable prometheus                                                                          | `bool`                                                                                                                                   | `true`           |    no    |
-| <a name="input_prometheus_persistence_storage"></a> [prometheus_persistence_storage](#input_prometheus_persistence_storage)                         | Enable persistence storage for Prometheus                                                  | `bool`                                                                                                                                   | `false`          |    no    |
-| <a name="input_pushgateway_ingress_host"></a> [pushgateway_ingress_host](#input_pushgateway_ingress_host)                                           | List of hosts for prometheus push gateway ingress                                          | `list`                                                                                                                                   | `[]`             |    no    |
-| <a name="input_storage_class"></a> [storage_class](#input_storage_class)                                                                            | Storage Class to use for Persistence                                                       | `string`                                                                                                                                 | `"gp2"`          |    no    |
-
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_cert_manager_email"></a> [cert\_manager\_email](#input\_cert\_manager\_email) | Your email address to use for cert manager | `any` | `null` | no |
+| <a name="input_cert_manager_leader_election_namespace"></a> [cert\_manager\_leader\_election\_namespace](#input\_cert\_manager\_leader\_election\_namespace) | The namespace used for the leader election lease. Change to cert-manager for GKE Autopilot | `string` | `"cert-manager"` | no |
+| <a name="input_cert_manager_resources"></a> [cert\_manager\_resources](#input\_cert\_manager\_resources) | n/a | <pre>map(object({<br>    cpu    = string<br>    memory = string<br>  }))</pre> | `null` | no |
+| <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | n/a | `string` | `"1.15.1"` | no |
+| <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
+| <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
+| <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
+| <a name="input_grafana_admin_password"></a> [grafana\_admin\_password](#input\_grafana\_admin\_password) | The Password of Grafana for login Dashboard | `string` | `""` | no |
+| <a name="input_grafana_admin_user"></a> [grafana\_admin\_user](#input\_grafana\_admin\_user) | The User name of Grafana for login Dashboard | `string` | `"opszero"` | no |
+| <a name="input_grafana_datasources"></a> [grafana\_datasources](#input\_grafana\_datasources) | n/a | <pre>list(object({<br>    name      = string<br>    type      = string<br>    url       = string<br>    access    = string<br>    isDefault = bool<br>  }))</pre> | `[]` | no |
+| <a name="input_grafana_efs_enable"></a> [grafana\_efs\_enable](#input\_grafana\_efs\_enable) | Enable EFS storage for Grafana | `bool` | `false` | no |
+| <a name="input_grafana_efs_storage_class_name"></a> [grafana\_efs\_storage\_class\_name](#input\_grafana\_efs\_storage\_class\_name) | If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed | `string` | `""` | no |
+| <a name="input_grafana_enabled"></a> [grafana\_enabled](#input\_grafana\_enabled) | Enable grafana | `bool` | `false` | no |
+| <a name="input_grafana_extra_yml"></a> [grafana\_extra\_yml](#input\_grafana\_extra\_yml) | Grafana Datasources as Yaml | `any` | `null` | no |
+| <a name="input_grafana_google_auth_client_id"></a> [grafana\_google\_auth\_client\_id](#input\_grafana\_google\_auth\_client\_id) | Add Google Auth client id | `string` | `""` | no |
+| <a name="input_grafana_google_auth_client_secret"></a> [grafana\_google\_auth\_client\_secret](#input\_grafana\_google\_auth\_client\_secret) | Add Google Auth client secret | `string` | `""` | no |
+| <a name="input_grafana_ingress_enabled"></a> [grafana\_ingress\_enabled](#input\_grafana\_ingress\_enabled) | Enable grafana ingress | `bool` | `false` | no |
+| <a name="input_grafana_ingress_hosts"></a> [grafana\_ingress\_hosts](#input\_grafana\_ingress\_hosts) | Add grafana ingress hosts | `list` | `[]` | no |
+| <a name="input_grafana_loki_bucket_name"></a> [grafana\_loki\_bucket\_name](#input\_grafana\_loki\_bucket\_name) | Name for the S3 bucket | `string` | `""` | no |
+| <a name="input_grafana_loki_enabled"></a> [grafana\_loki\_enabled](#input\_grafana\_loki\_enabled) | Enable grafana loki | `bool` | `false` | no |
+| <a name="input_grafana_loki_yml_file"></a> [grafana\_loki\_yml\_file](#input\_grafana\_loki\_yml\_file) | n/a | `any` | `null` | no |
+| <a name="input_grafana_persistence_storage"></a> [grafana\_persistence\_storage](#input\_grafana\_persistence\_storage) | Enable persistence storage for Grafana | `bool` | `false` | no |
+| <a name="input_kubecost_enabled"></a> [kubecost\_enabled](#input\_kubecost\_enabled) | n/a | `bool` | `false` | no |
+| <a name="input_nginx_max_replicas"></a> [nginx\_max\_replicas](#input\_nginx\_max\_replicas) | Maximum number of Nginx Replicas | `number` | `11` | no |
+| <a name="input_nginx_min_replicas"></a> [nginx\_min\_replicas](#input\_nginx\_min\_replicas) | Minimum number of Nginx Replicas | `number` | `2` | no |
+| <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | Release name for the installed helm chart | `string` | `"nginx"` | no |
+| <a name="input_nginx_yml_file"></a> [nginx\_yml\_file](#input\_nginx\_yml\_file) | n/a | `any` | `null` | no |
+| <a name="input_prometheus_additional_scrape_configs"></a> [prometheus\_additional\_scrape\_configs](#input\_prometheus\_additional\_scrape\_configs) | Add additional scrape for configuration for prometheus if needed | <pre>list(object({<br>    job_name        = string<br>    targets         = list(string)<br>    scrape_interval = string<br>    metrics_path    = string<br>  }))</pre> | `[]` | no |
+| <a name="input_prometheus_enabled"></a> [prometheus\_enabled](#input\_prometheus\_enabled) | Enable prometheus | `bool` | `true` | no |
+| <a name="input_prometheus_persistence_storage"></a> [prometheus\_persistence\_storage](#input\_prometheus\_persistence\_storage) | Enable persistence storage for Prometheus | `bool` | `false` | no |
+| <a name="input_pushgateway_ingress_host"></a> [pushgateway\_ingress\_host](#input\_pushgateway\_ingress\_host) | List of hosts for prometheus push gateway ingress | `list` | `[]` | no |
+| <a name="input_storage_class"></a> [storage\_class](#input\_storage\_class) | Storage Class to use for Persistence | `string` | `"gp2"` | no |
 ## Resources
 
-| Name                                                                                                                                                                                     | Type     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| [aws_s3_bucket.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)                                                                           | resource |
-| [aws_s3_bucket_public_access_block.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block)                                   | resource |
+| Name | Type |
+|------|------|
+| [aws_s3_bucket.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_public_access_block.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
-| [aws_s3_bucket_versioning.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning)                                                     | resource |
-| [helm_release.cert-manager](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)                                                                        | resource |
-| [helm_release.datadog](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)                                                                             | resource |
-| [helm_release.grafana](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)                                                                             | resource |
-| [helm_release.keda](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)                                                                                | resource |
-| [helm_release.loki](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)                                                                                | resource |
-| [helm_release.nginx](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)                                                                               | resource |
-| [helm_release.prometheus](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)                                                                          | resource |
-| [null_resource.cert-manager-cluster-issuer](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource)                                                       | resource |
-| [random_password.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password)                                                        | resource |
-
+| [aws_s3_bucket_versioning.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
+| [helm_release.cert-manager](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.datadog](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.grafana](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.keda](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.kubecost](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.loki](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.nginx](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.prometheus](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [null_resource.cert-manager-cluster-issuer](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [random_password.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 ## Outputs
 
-| Name                                                                                                  | Description |
-| ----------------------------------------------------------------------------------------------------- | ----------- |
-| <a name="output_grafana_admin_password"></a> [grafana_admin_password](#output_grafana_admin_password) | n/a         |
-
+| Name | Description |
+|------|-------------|
+| <a name="output_grafana_admin_password"></a> [grafana\_admin\_password](#output\_grafana\_admin\_password) | n/a |
 # 🚀 Built by opsZero!
 
 <a href="https://opszero.com"><img src="https://opszero.com/wp-content/uploads/2024/07/opsZero_logo_svg.svg" width="300px"/></a>
