@@ -166,7 +166,7 @@ variable "grafana_loki_yml_file" {
   default = null
 }
 
-variable "s3_bucket_name" {
+variable "grafana_loki_bucket_name" {
   type        = string
   default     = "s3-grafana-loki"
   description = "Name for the S3 bucket"
@@ -175,10 +175,4 @@ variable "s3_bucket_name" {
 variable "grafana_loki_enabled" {
   default     = false
   description = "Enable grafana loki"
-}
-
-variable "block_public_acls" {
-  type        = bool
-  default     = true
-  description = "Whether Amazon S3 should block public ACLs for this bucket."
 }

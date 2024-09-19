@@ -1,17 +1,21 @@
 # S3 Bucket
 resource "aws_s3_bucket" "s3_loki" {
-  bucket = var.s3_bucket_name
+  count            = var.grafana_enabled && var.grafana_loki_enabled ? 1 : 0
+  bucket = var.grafana_loki_bucket_name
 }
 
 # Block public access to the S3 bucket
 resource "aws_s3_bucket_public_access_block" "s3_loki" {
-  bucket            = aws_s3_bucket.s3_loki.id
-  block_public_acls = var.block_public_acls
+  count            = var.grafana_enabled && var.grafana_loki_enabled ? 1 : 0
+  bucket              = join("", aws_s3_bucket.s3_loki.*.id)
+  block_public_acls   = true
+  block_public_policy = true
 }
 
 # Enable default encryption for the S3 bucket using a customer-managed key
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3_loki" {
-  bucket = aws_s3_bucket.s3_loki.id
+  count            = var.grafana_enabled && var.grafana_loki_enabled ? 1 : 0
+  bucket = join("", aws_s3_bucket.s3_loki.*.id)
 
   rule {
     apply_server_side_encryption_by_default {
@@ -22,7 +26,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3_loki" {
 
 # Enable versioning for the S3 bucket
 resource "aws_s3_bucket_versioning" "s3_loki" {
-  bucket = aws_s3_bucket.s3_loki.id
+  count            = var.grafana_enabled && var.grafana_loki_enabled ? 1 : 0
+  bucket = join("", aws_s3_bucket.s3_loki.*.id)
   versioning_configuration {
     status = "Enabled"
   }
@@ -39,7 +44,7 @@ resource "helm_release" "loki" {
 
   values = [
     var.grafana_loki_yml_file != null ? var.grafana_loki_yml_file : templatefile("${path.module}/loki.yml", {
-    s3_bucket = aws_s3_bucket.s3_loki.bucket })
+    s3_bucket = join("", aws_s3_bucket.s3_loki.bucket) })
   ]
 
 }
