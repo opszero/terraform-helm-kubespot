@@ -53,6 +53,7 @@ backend:
     storageClass: ${storage_class}
 
 chunksCache:
+  enabled: false
   persistence:
     storageClass: ${storage_class}
 
