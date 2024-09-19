@@ -56,3 +56,8 @@ chunksCache:
   persistence:
     storageClass: ${storage_class}
 
+gateway:
+  basicAuth:
+    enabled: true
+    username: loki
+    password: loki
