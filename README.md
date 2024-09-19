@@ -85,6 +85,7 @@ terraform destroy -auto-approve
 | <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
 | <a name="input_grafana_admin_password"></a> [grafana\_admin\_password](#input\_grafana\_admin\_password) | The Password of Grafana for login Dashboard | `string` | `""` | no |
 | <a name="input_grafana_admin_user"></a> [grafana\_admin\_user](#input\_grafana\_admin\_user) | The User name of Grafana for login Dashboard | `string` | `"opszero"` | no |
+| <a name="input_grafana_datasources"></a> [grafana\_datasources](#input\_grafana\_datasources) | n/a | <pre>list(object({<br>    name      = string<br>    type      = string<br>    url       = string<br>    access    = string<br>    isDefault = bool<br>  }))</pre> | `[]` | no |
 | <a name="input_grafana_efs_enable"></a> [grafana\_efs\_enable](#input\_grafana\_efs\_enable) | Enable EFS storage for Grafana | `bool` | `false` | no |
 | <a name="input_grafana_efs_storage_class_name"></a> [grafana\_efs\_storage\_class\_name](#input\_grafana\_efs\_storage\_class\_name) | If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed | `string` | `""` | no |
 | <a name="input_grafana_enabled"></a> [grafana\_enabled](#input\_grafana\_enabled) | Enable grafana | `bool` | `false` | no |
