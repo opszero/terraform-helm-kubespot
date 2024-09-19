@@ -108,6 +108,7 @@ terraform destroy -auto-approve
 | <a name="input_prometheus_enabled"></a> [prometheus\_enabled](#input\_prometheus\_enabled) | Enable prometheus | `bool` | `true` | no |
 | <a name="input_prometheus_persistence_storage"></a> [prometheus\_persistence\_storage](#input\_prometheus\_persistence\_storage) | Enable persistence storage for Prometheus | `bool` | `false` | no |
 | <a name="input_pushgateway_ingress_host"></a> [pushgateway\_ingress\_host](#input\_pushgateway\_ingress\_host) | List of hosts for prometheus push gateway ingress | `list` | `[]` | no |
+| <a name="input_storage_class"></a> [storage\_class](#input\_storage\_class) | Storage Class to use for Persistence | `string` | `"gp2"` | no |
 ## Resources
 
 | Name | Type |
