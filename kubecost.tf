@@ -8,7 +8,7 @@ resource "helm_release" "kubecost" {
   create_namespace = true
 
   set {
-    name  = "global.prometheus.enabled "
+    name  = "global.prometheus.enabled"
     value = false
   }
 

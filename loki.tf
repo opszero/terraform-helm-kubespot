@@ -1,3 +1,6 @@
+// https://github.com/grafana/loki/tree/main/production/helm/loki
+
+
 # S3 Bucket
 resource "aws_s3_bucket" "s3_loki" {
   count  = var.grafana_loki_enabled ? 1 : 0
