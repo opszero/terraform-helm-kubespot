@@ -44,7 +44,7 @@ resource "helm_release" "loki" {
 
   values = [
     var.grafana_loki_yml_file != null ? var.grafana_loki_yml_file : templatefile("${path.module}/loki.yml", {
-    s3_bucket = join("", aws_s3_bucket.s3_loki.bucket) })
+    s3_bucket = join("", aws_s3_bucket.s3_loki.*.bucket) })
   ]
 
 }
