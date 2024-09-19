@@ -6,6 +6,8 @@
 - nginx
 - prometheus
 - grafana
+- grafana loki
+- kubecost
 
 # Configuration
 
