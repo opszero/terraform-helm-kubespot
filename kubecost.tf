@@ -6,4 +6,19 @@ resource "helm_release" "kubecost" {
   namespace        = "kubecost"
   repository       = "https://kubecost.github.io/cost-analyzer/"
   create_namespace = true
+
+  set {
+    name  = "global.prometheus.enabled "
+    value = false
+  }
+
+  set {
+    name  = "global.prometheus.fqdn"
+    value = "http://prometheus-server.prometheus.svc:80"
+  }
+
+  set {
+    name  = "persistentVolume.enabled"
+    value = false
+  }
 }
