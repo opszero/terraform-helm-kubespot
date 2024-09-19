@@ -29,6 +29,11 @@ resource "helm_release" "prometheus" {
     value = var.prometheus_persistence_storage
   }
 
+  set {
+    name  = "server.persistentVolume.storageClass"
+    value = var.storage_class
+  }
+
   dynamic "set" {
     for_each = length(var.pushgateway_ingress_host) > 0 ? [
       {
