@@ -39,6 +39,8 @@ loki:
 minio:
   enabled: false
 
+resultsCache:
+  enabled: false
 
 write:
   persistence:
@@ -56,9 +58,6 @@ chunksCache:
   enabled: false
   persistence:
     storageClass: ${storage_class}
-
-resultsCache:
-  enabled: false
 
 gateway:
   basicAuth:
