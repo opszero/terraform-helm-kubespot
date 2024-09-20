@@ -1,0 +1,19 @@
+extensions:
+  basicauth/loki:
+    client_auth:
+      username: loki
+      password: loki
+
+exporters:
+  loki:
+    auth:
+      authenticator: basicauth/loki
+    endpoint: http:///loki-gateway.loki.svc.cluster.local/api/v1/push
+
+service:
+  extensions: [basicauth/loki]
+  pipelines:
+    logs:
+      receivers: [...]
+      processors: [...]
+      exporters: [loki, ...]
