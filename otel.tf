@@ -20,4 +20,3 @@ resource "helm_release" "opentelemetry_collector" {
   ]
 }
 
-}
