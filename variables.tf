@@ -131,6 +131,10 @@ variable "grafana_loki_enabled" {
 variable "grafana_loki_yml_file" {
   default = null
 }
+variable "otel_yml_file" {
+  default = null
+}
+
 
 variable "grafana_loki_bucket_name" {
   type        = string
