@@ -57,9 +57,6 @@ chunksCache:
   persistence:
     storageClass: ${storage_class}
 
-resultsCache:
-  enabled: false
-
 gateway:
   basicAuth:
     enabled: true
