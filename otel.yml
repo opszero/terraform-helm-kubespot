@@ -4,17 +4,26 @@ config:
       client_auth:
         username: loki
         password: loki
+    health_check: {}
+
+  receivers:
+    otlp:
+      protocols:
+        grpc: {}
+        http: {}
+
+  processors:
+    batch: {}
+    memory_limiter: {}
 
   exporters:
-    loki:
-      auth:
-        authenticator: basicauth/loki
-      endpoint: http:///loki-gateway.loki.svc.cluster.local/api/v1/push
+    otlphttp:
+      endpoint: "http://loki-gateway.loki.svc.cluster.local/api/v1/push"
 
   service:
-    extensions: [basicauth/loki]
+    extensions: [basicauth/loki, health_check]
     pipelines:
       logs:
-        receivers: [...]
-        processors: [...]
-        exporters: [loki, ...]
+        receivers: [otlp]
+        processors: [batch, memory_limiter]
+        exporters: [otlphttp]
