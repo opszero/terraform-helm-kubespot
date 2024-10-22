@@ -5,7 +5,6 @@ controller:
     use-forwarded-headers: "true"
     keep-alive-requests: 10000
     upstream-keepalive-timeout: 300
-    upstream-keepalive-timeout: 300
     proxy-body-size: "2048m"
   proxySetHeaders:
     use-forwarded-headers: "true"
