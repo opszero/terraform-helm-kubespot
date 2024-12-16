@@ -63,6 +63,6 @@ resultsCache:
 
 gateway:
   basicAuth:
-    enabled: true
+    enabled: false
     username: loki
     password: loki
