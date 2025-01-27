@@ -4,6 +4,7 @@ resource "helm_release" "nginx" {
   chart            = "ingress-nginx"
   namespace        = "nginx"
   create_namespace = true
+  version          = var.ingress_nginx_version
 
   values = [
     var.nginx_yml_file == null ? file("${path.module}/nginx.yml") : "${var.nginx_yml_file}"

@@ -6,7 +6,7 @@ resource "helm_release" "prometheus" {
   namespace        = "prometheus"
   create_namespace = true
   repository       = "https://prometheus-community.github.io/helm-charts"
-
+  version          = var.prometheus_version
 
   values = length(var.prometheus_additional_scrape_configs) > 0 ? [
     templatefile("${path.module}/prometheus_additional_scrape_config.yml", {

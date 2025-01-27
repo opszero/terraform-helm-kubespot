@@ -182,9 +182,57 @@ variable "cert_manager_resources" {
 }
 
 variable "cert_manager_version" {
-  default = "1.15.1"
+  description = "The version of the Cert-Manager Helm chart to be deployed, used for automating the issuance and renewal of TLS certificates."
+  default     = "1.16.3"
 }
 
 variable "kubecost_enabled" {
-  default = false
+  description = "A boolean to enable or disable the deployment of Kubecost, a tool for monitoring and managing Kubernetes cost and resource usage."
+  default     = false
 }
+
+variable "datadog_version" {
+  description = "The version of the Datadog Helm chart to be deployed, used for monitoring, security, and observability in Kubernetes environments."
+  default     = "3.88.3"
+}
+
+variable "grafana_version" {
+  description = "The version of the Grafana Helm chart to be deployed, used for data visualization and monitoring dashboards."
+  default     = "8.8.5"
+}
+
+variable "keda_version" {
+  description = "The version of the KEDA Helm chart to be deployed, used for Kubernetes-based Event-Driven Autoscaling."
+  default     = "2.16.1"
+}
+
+variable "kubecost_version" {
+  description = "The version of the Kubecost Helm chart to be deployed, used for Kubernetes cost management and optimization."
+  default     = "2.5.3"
+}
+
+variable "loki_version" {
+  description = "The version of the Loki Helm chart to be deployed, used for log aggregation and analysis."
+  default     = "6.25.0"
+}
+
+variable "promtail_version" {
+  description = "The version of the Promtail Helm chart to be deployed, used as a log collector to send logs to Loki."
+  default     = "6.16.6"
+}
+
+variable "ingress_nginx_version" {
+  description = "The version of the Ingress-NGINX Helm chart to be deployed, used for managing ingress traffic in Kubernetes."
+  default     = "4.12.0"
+}
+
+variable "opentelemetry_collector_version" {
+  description = "The version of the OpenTelemetry Collector Helm chart to be deployed, used for collecting telemetry data (logs, metrics, and traces) from various sources."
+  default     = "0.115.0"
+}
+
+variable "prometheus_version" {
+  description = "The version of the Prometheus Helm chart to be deployed, used for monitoring and alerting in Kubernetes."
+  default     = "27.1.0"
+}
+

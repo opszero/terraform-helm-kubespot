@@ -3,7 +3,7 @@ resource "helm_release" "keda" {
   repository       = "https://kedacore.github.io/charts"
   chart            = "keda"
   namespace        = "keda"
-  version          = "2.13.2"
+  version          = var.keda_version
   create_namespace = true
   recreate_pods    = true
 }

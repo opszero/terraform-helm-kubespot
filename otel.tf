@@ -7,7 +7,7 @@ resource "helm_release" "opentelemetry_collector" {
 
   namespace        = "otel"
   create_namespace = true
-  version          = "0.106.0"
+  version          = var.opentelemetry_collector_version
   set {
     name  = "image.repository"
     value = "otel/opentelemetry-collector-k8s"
@@ -23,7 +23,7 @@ resource "helm_release" "opentelemetry_collector" {
   }
 
   values = [
-      var.otel_yml_file != null ? var.otel_yml_file : "${file("${path.module}/otel.yml")}",
+    var.otel_yml_file != null ? var.otel_yml_file : "${file("${path.module}/otel.yml")}",
   ]
 }
 

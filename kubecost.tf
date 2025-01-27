@@ -6,6 +6,7 @@ resource "helm_release" "kubecost" {
   namespace        = "kubecost"
   repository       = "https://kubecost.github.io/cost-analyzer/"
   create_namespace = true
+  version          = var.kubecost_version
 
   set {
     name  = "global.prometheus.enabled"
