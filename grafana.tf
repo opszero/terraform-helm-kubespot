@@ -13,7 +13,7 @@ resource "helm_release" "grafana" {
   namespace        = "grafana"
   create_namespace = true
   repository       = "https://grafana.github.io/helm-charts"
-
+  version          = var.grafana_version
   values = [
     templatefile("${path.module}/grafana.yml", {
       GOOGLE_CLIENT_ID     = var.grafana_google_auth_client_id

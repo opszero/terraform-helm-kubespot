@@ -43,7 +43,7 @@ resource "helm_release" "loki" {
   namespace        = "loki"
   create_namespace = true
   repository       = "https://grafana.github.io/helm-charts"
-  version          = "6.10.2"
+  version          = var.loki_version
 
   values = [
     var.grafana_loki_yml_file != null ? var.grafana_loki_yml_file : templatefile("${path.module}/loki.yml", {
@@ -63,7 +63,7 @@ resource "helm_release" "promtail" {
   namespace        = "loki"
   create_namespace = true
   repository       = "https://grafana.github.io/helm-charts"
-  version          = "6.16.6"
+  version          = var.promtail_version
 
   set {
     name  = "config.logLevel"
