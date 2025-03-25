@@ -223,7 +223,7 @@ variable "promtail_version" {
 
 variable "ingress_nginx_version" {
   description = "The version of the Ingress-NGINX Helm chart to be deployed, used for managing ingress traffic in Kubernetes."
-  default     = "4.12.0"
+  default     = "4.12.1"
 }
 
 variable "opentelemetry_collector_version" {
