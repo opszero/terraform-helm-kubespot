@@ -104,7 +104,7 @@ terraform destroy -auto-approve
 | <a name="input_grafana_loki_yml_file"></a> [grafana\_loki\_yml\_file](#input\_grafana\_loki\_yml\_file) | n/a | `any` | `null` | no |
 | <a name="input_grafana_persistence_storage"></a> [grafana\_persistence\_storage](#input\_grafana\_persistence\_storage) | Enable persistence storage for Grafana | `bool` | `false` | no |
 | <a name="input_grafana_version"></a> [grafana\_version](#input\_grafana\_version) | The version of the Grafana Helm chart to be deployed, used for data visualization and monitoring dashboards. | `string` | `"8.8.5"` | no |
-| <a name="input_ingress_nginx_version"></a> [ingress\_nginx\_version](#input\_ingress\_nginx\_version) | The version of the Ingress-NGINX Helm chart to be deployed, used for managing ingress traffic in Kubernetes. | `string` | `"4.12.0"` | no |
+| <a name="input_ingress_nginx_version"></a> [ingress\_nginx\_version](#input\_ingress\_nginx\_version) | The version of the Ingress-NGINX Helm chart to be deployed, used for managing ingress traffic in Kubernetes. | `string` | `"4.12.1"` | no |
 | <a name="input_keda_version"></a> [keda\_version](#input\_keda\_version) | The version of the KEDA Helm chart to be deployed, used for Kubernetes-based Event-Driven Autoscaling. | `string` | `"2.16.1"` | no |
 | <a name="input_kubecost_enabled"></a> [kubecost\_enabled](#input\_kubecost\_enabled) | A boolean to enable or disable the deployment of Kubecost, a tool for monitoring and managing Kubernetes cost and resource usage. | `bool` | `false` | no |
 | <a name="input_kubecost_version"></a> [kubecost\_version](#input\_kubecost\_version) | The version of the Kubecost Helm chart to be deployed, used for Kubernetes cost management and optimization. | `string` | `"2.5.3"` | no |
