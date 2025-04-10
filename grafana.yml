@@ -51,20 +51,28 @@ grafana.ini:
     hosted_domain: ${host}
     %{ endfor }
 
-  server:
-    %{ for host in INGRESS_HOSTS }
-    domain: ${host}
-    root_url: "%(protocol)s://%(domain)s/grafana"
-    serve_from_sub_path: true
-    %{ endfor }
-
 ingress:
+  enabled: true
   ingressClassName: nginx
-  enabled: ${INGRESS_ENABLED}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/proxy-body-size: 128m
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: '120'
+    nginx.ingress.kubernetes.io/proxy-next-upstream-timeout: '120'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '120'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '120'
+  path: /
+  pathType: Prefix
   hosts:
     %{ for host in INGRESS_HOSTS }
     - ${host}
     %{ endfor }
-  path: "/grafana"
+
+  tls:
+    - hosts:
+        %{ for host in INGRESS_HOSTS }
+        - ${host}
+        %{ endfor }
+      secretName: grafana
 
 assertNoLeakedSecrets: false
