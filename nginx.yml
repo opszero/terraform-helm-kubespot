@@ -23,6 +23,11 @@ controller:
       service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '3600'
       service.beta.kubernetes.io/aws-load-balancer-type: nlb
       kubernetes.io/ingress.class: nginx
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: "/healthz"
+      externalTrafficPolicy: Local
+
+
+
   autoscaling:
     # We will be using Keda for the Autoscaling so we don't need the HPA.
     enabled: false
