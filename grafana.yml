@@ -59,7 +59,7 @@ grafana.ini:
     %{ endfor }
 
 ingress:
-  ingressClassName: nginx
+  ingressClassName: ${INGRESS_CLASS_NAME}
   enabled: ${INGRESS_ENABLED}
   hosts:
     %{ for host in INGRESS_HOSTS }

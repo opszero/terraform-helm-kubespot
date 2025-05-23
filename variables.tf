@@ -62,6 +62,11 @@ variable "grafana_ingress_enabled" {
   description = "Enable grafana ingress"
 }
 
+variable "grafana_ingress_class_name" {
+  default     = "nginx"
+  description = "Ingress class name for Grafana"
+}
+
 variable "grafana_ingress_hosts" {
   default     = []
   description = "Add grafana ingress hosts"
@@ -86,6 +91,8 @@ variable "grafana_extra_yml" {
   default     = null
   description = "Grafana Datasources as Yaml"
 }
+
+
 
 variable "grafana_efs_enable" {
   default     = false
