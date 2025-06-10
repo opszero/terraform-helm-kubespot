@@ -72,7 +72,6 @@ terraform destroy -auto-approve
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 | <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
@@ -92,7 +91,7 @@ terraform destroy -auto-approve
 | <a name="input_grafana_admin_user"></a> [grafana\_admin\_user](#input\_grafana\_admin\_user) | The User name of Grafana for login Dashboard | `string` | `"opszero"` | no |
 | <a name="input_grafana_datasources"></a> [grafana\_datasources](#input\_grafana\_datasources) | n/a | <pre>list(object({<br/>    name      = string<br/>    type      = string<br/>    url       = string<br/>    access    = string<br/>    isDefault = bool<br/>  }))</pre> | `[]` | no |
 | <a name="input_grafana_efs_enable"></a> [grafana\_efs\_enable](#input\_grafana\_efs\_enable) | Enable EFS storage for Grafana | `bool` | `false` | no |
-| <a name="input_grafana_efs_storage_class_name"></a> [grafana\_efs\_storage\_class\_name](#input\_grafana\_efs\_storage\_class\_name) | If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed | `string` | `""` | no |
+| <a name="input_grafana_efs_storage_class_name"></a> [grafana\_efs\_storage\_class\_name](#input\_grafana\_efs\_storage\_class\_name) | If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed | `string` | `"gp2"` | no |
 | <a name="input_grafana_enabled"></a> [grafana\_enabled](#input\_grafana\_enabled) | Enable grafana | `bool` | `false` | no |
 | <a name="input_grafana_extra_yml"></a> [grafana\_extra\_yml](#input\_grafana\_extra\_yml) | Grafana Datasources as Yaml | `any` | `null` | no |
 | <a name="input_grafana_google_auth_client_id"></a> [grafana\_google\_auth\_client\_id](#input\_grafana\_google\_auth\_client\_id) | Add Google Auth client id | `string` | `""` | no |
@@ -103,7 +102,7 @@ terraform destroy -auto-approve
 | <a name="input_grafana_loki_bucket_name"></a> [grafana\_loki\_bucket\_name](#input\_grafana\_loki\_bucket\_name) | Name for the S3 bucket | `string` | `""` | no |
 | <a name="input_grafana_loki_enabled"></a> [grafana\_loki\_enabled](#input\_grafana\_loki\_enabled) | Enable grafana loki | `bool` | `false` | no |
 | <a name="input_grafana_loki_yml_file"></a> [grafana\_loki\_yml\_file](#input\_grafana\_loki\_yml\_file) | n/a | `any` | `null` | no |
-| <a name="input_grafana_persistence_storage"></a> [grafana\_persistence\_storage](#input\_grafana\_persistence\_storage) | Enable persistence storage for Grafana | `bool` | `false` | no |
+| <a name="input_grafana_persistence_storage"></a> [grafana\_persistence\_storage](#input\_grafana\_persistence\_storage) | Enable persistence storage for Grafana | `bool` | `true` | no |
 | <a name="input_grafana_version"></a> [grafana\_version](#input\_grafana\_version) | The version of the Grafana Helm chart to be deployed, used for data visualization and monitoring dashboards. | `string` | `"8.8.5"` | no |
 | <a name="input_ingress_nginx_version"></a> [ingress\_nginx\_version](#input\_ingress\_nginx\_version) | The version of the Ingress-NGINX Helm chart to be deployed, used for managing ingress traffic in Kubernetes. | `string` | `"4.12.1"` | no |
 | <a name="input_keda_version"></a> [keda\_version](#input\_keda\_version) | The version of the KEDA Helm chart to be deployed, used for Kubernetes-based Event-Driven Autoscaling. | `string` | `"2.16.1"` | no |
@@ -127,10 +126,6 @@ terraform destroy -auto-approve
 
 | Name | Type |
 |------|------|
-| [aws_s3_bucket.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_public_access_block.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_s3_bucket_server_side_encryption_configuration.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
-| [aws_s3_bucket_versioning.s3_loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
 | [helm_release.cert-manager](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.datadog](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.grafana](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
