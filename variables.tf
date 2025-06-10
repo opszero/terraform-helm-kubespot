@@ -83,7 +83,7 @@ variable "grafana_google_auth_client_secret" {
 }
 
 variable "grafana_persistence_storage" {
-  default     = false
+  default     = true
   description = "Enable persistence storage for Grafana"
 }
 
@@ -99,7 +99,7 @@ variable "grafana_efs_enable" {
   description = "Enable EFS storage for Grafana"
 }
 variable "grafana_efs_storage_class_name" {
-  default     = ""
+  default     = "gp2"
   description = "If EFS is needed pass EFS storage class, but make sure efs and efs driver deployed"
 }
 
