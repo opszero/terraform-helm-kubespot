@@ -13,13 +13,15 @@ resource "helm_release" "datadog" {
 
   values = concat(
     [var.datadog_values == "" ? "${file("${path.module}/datadog.yml")}" : var.datadog_values],
-  var.datadog_values_extra)
+    var.datadog_values_extra)
 
   version = var.datadog_version
   wait    = false
 
-  set {
-    name  = "datadog.apiKey"
-    value = var.datadog_api_key
-  }
+  set = [
+    {
+      name  = "datadog.apiKey"
+      value = var.datadog_api_key
+    }
+  ]
 }
