@@ -28,38 +28,30 @@ resource "helm_release" "grafana" {
     var.grafana_extra_yml != null ? var.grafana_extra_yml : ""
   ]
 
-  set {
-    name  = "persistence.enabled"
-    value = var.grafana_persistence_storage
-  }
-
-  set {
-    name  = "adminUser"
-    value = var.grafana_admin_user
-  }
-
-  set {
-    name  = "adminPassword"
-    value = var.grafana_admin_password != "" ? var.grafana_admin_password : random_password.grafana_admin_password[0].result
-
-  }
-
-  dynamic "set" {
-    for_each = var.grafana_persistence_storage != false ? [1] : []
-    content {
+  set = concat([
+    {
+      name  = "persistence.enabled"
+      value = tostring(var.grafana_persistence_storage)
+    },
+    {
+      name  = "adminUser"
+      value = var.grafana_admin_user
+    },
+    {
+      name  = "adminPassword"
+      value = var.grafana_admin_password != "" ? var.grafana_admin_password : random_password.grafana_admin_password[0].result
+    }
+  ],
+    var.grafana_persistence_storage != false ? [{
       name  = "persistence.storageClassName"
       value = var.grafana_efs_storage_class_name
-    }
-  }
+    }] : [],
 
-  # until upstream is fixed
-  # https://github.com/grafana/helm-charts/issues/814
-  dynamic "set" {
-    for_each = var.grafana_efs_enable != false ? [1] : []
-    content {
+    # until upstream is fixed
+    # https://github.com/grafana/helm-charts/issues/814
+    var.grafana_efs_enable != false ? [{
       name  = "initChownData.enabled"
       value = "false"
-    }
-  }
-
+    }] : []
+  )
 }

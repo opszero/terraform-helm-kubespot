@@ -10,21 +10,20 @@ resource "helm_release" "nginx" {
     var.nginx_yml_file == null ? file("${path.module}/nginx.yml") : "${var.nginx_yml_file}"
   ]
 
-  set {
-    name  = "controller.ingressClass"
-    value = var.nginx_name
-  }
-
-  set {
-    name  = "controller.keda.minReplicas"
-    value = var.nginx_min_replicas
-  }
-
-  set {
-    name  = "controller.keda.maxReplicas"
-    value = var.nginx_max_replicas
-  }
-
+  set = [
+    {
+      name  = "controller.ingressClass"
+      value = var.nginx_name
+    },
+    {
+      name  = "controller.keda.minReplicas"
+      value = var.nginx_min_replicas
+    },
+    {
+      name  = "controller.keda.maxReplicas"
+      value = var.nginx_max_replicas
+    }
+  ]
   depends_on = [
     helm_release.keda,
     helm_release.prometheus,
