@@ -26,17 +26,17 @@ resource "helm_release" "promtail" {
   repository       = "https://grafana.github.io/helm-charts"
   version          = var.promtail_version
 
-  set {
+  set = {
     name  = "config.logLevel"
     value = "info"
   }
 
-  set {
+  set = {
     name  = "config.serverPort"
     value = "3101"
   }
 
-  set {
+  set = {
     name  = "config.clients[0].url"
     value = "http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push"
   }

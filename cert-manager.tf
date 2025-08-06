@@ -6,12 +6,12 @@ resource "helm_release" "cert-manager" {
   create_namespace = true
   version          = var.cert_manager_version
 
-  set {
+  set = {
     name  = "installCRDs"
     value = true
   }
 
-  set {
+  set = {
     name  = "global.leaderElection.namespace"
     value = var.cert_manager_leader_election_namespace
   }

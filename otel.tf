@@ -8,16 +8,16 @@ resource "helm_release" "opentelemetry_collector" {
   namespace        = "otel"
   create_namespace = true
   version          = var.opentelemetry_collector_version
-  set {
+  set = {
     name  = "image.repository"
     value = "otel/opentelemetry-collector-k8s"
   }
 
-  set {
+  set = {
     name  = "command.name"
     value = "otelcol-k8s"
   }
-  set {
+  set = {
     name  = "mode"
     value = "daemonset"
   }

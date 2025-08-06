@@ -28,23 +28,23 @@ resource "helm_release" "grafana" {
     var.grafana_extra_yml != null ? var.grafana_extra_yml : ""
   ]
 
-  set {
+  set = {
     name  = "persistence.enabled"
     value = var.grafana_persistence_storage
   }
 
-  set {
+  set = {
     name  = "adminUser"
     value = var.grafana_admin_user
   }
 
-  set {
+  set = {
     name  = "adminPassword"
     value = var.grafana_admin_password != "" ? var.grafana_admin_password : random_password.grafana_admin_password[0].result
 
   }
 
-  dynamic "set" {
+  dynamic "set" = {
     for_each = var.grafana_persistence_storage != false ? [1] : []
     content {
       name  = "persistence.storageClassName"
@@ -54,7 +54,7 @@ resource "helm_release" "grafana" {
 
   # until upstream is fixed
   # https://github.com/grafana/helm-charts/issues/814
-  dynamic "set" {
+  dynamic "set" = {
     for_each = var.grafana_efs_enable != false ? [1] : []
     content {
       name  = "initChownData.enabled"

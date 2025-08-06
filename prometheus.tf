@@ -14,22 +14,22 @@ resource "helm_release" "prometheus" {
     }),
   ] : []
 
-  set {
+  set = {
     name  = "podSecurityPolicy.enabled"
     value = true
   }
 
-  set {
+  set = {
     name  = "server.retention"
     value = "1d"
   }
 
-  set {
+  set = {
     name  = "server.persistentVolume.enabled"
     value = var.prometheus_persistence_storage
   }
 
-  set {
+  set = {
     name  = "server.persistentVolume.storageClass"
     value = var.storage_class
   }
@@ -72,7 +72,7 @@ resource "helm_release" "prometheus" {
     }
   }
 
-  set {
+  set = {
     name  = "alertmanager.persistence.enabled"
     value = false
   }

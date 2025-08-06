@@ -10,17 +10,17 @@ resource "helm_release" "nginx" {
     var.nginx_yml_file == null ? file("${path.module}/nginx.yml") : "${var.nginx_yml_file}"
   ]
 
-  set {
+  set = {
     name  = "controller.ingressClass"
     value = var.nginx_name
   }
 
-  set {
+  set = {
     name  = "controller.keda.minReplicas"
     value = var.nginx_min_replicas
   }
 
-  set {
+  set = {
     name  = "controller.keda.maxReplicas"
     value = var.nginx_max_replicas
   }

@@ -8,17 +8,17 @@ resource "helm_release" "kubecost" {
   create_namespace = true
   version          = var.kubecost_version
 
-  set {
+  set = {
     name  = "global.prometheus.enabled"
     value = false
   }
 
-  set {
+  set = {
     name  = "global.prometheus.fqdn"
     value = "http://prometheus-server.prometheus.svc:80"
   }
 
-  set {
+  set = {
     name  = "persistentVolume.enabled"
     value = false
   }
