@@ -43,7 +43,7 @@ resource "helm_release" "grafana" {
     }
   ]
 
-  dynamic "set" {
+  dynamic "set" = {
     for_each = concat(
       [
         for i in [1] :
