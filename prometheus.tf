@@ -14,25 +14,28 @@ resource "helm_release" "prometheus" {
     }),
   ] : []
 
-  set = {
-    name  = "podSecurityPolicy.enabled"
-    value = true
-  }
-
-  set = {
-    name  = "server.retention"
-    value = "1d"
-  }
-
-  set = {
-    name  = "server.persistentVolume.enabled"
-    value = var.prometheus_persistence_storage
-  }
-
-  set = {
-    name  = "server.persistentVolume.storageClass"
-    value = var.storage_class
-  }
+  set = [
+    {
+      name  = "podSecurityPolicy.enabled"
+      value = true
+    },
+    {
+      name  = "server.retention"
+      value = "1d"
+    },
+    {
+      name  = "server.persistentVolume.enabled"
+      value = var.prometheus_persistence_storage
+    },
+    {
+      name  = "server.persistentVolume.storageClass"
+      value = var.storage_class
+    },
+    {
+      name  = "alertmanager.persistence.enabled"
+      value = false
+    }
+  ]
 
   dynamic "set" {
     for_each = length(var.pushgateway_ingress_host) > 0 ? [
@@ -71,10 +74,4 @@ resource "helm_release" "prometheus" {
       value = "8Gi"
     }
   }
-
-  set = {
-    name  = "alertmanager.persistence.enabled"
-    value = false
-  }
-
 }
