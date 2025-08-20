@@ -18,8 +18,8 @@ resource "helm_release" "datadog" {
   version = var.datadog_version
   wait    = false
 
-  set {
+  set = [{
     name  = "datadog.apiKey"
     value = var.datadog_api_key
-  }
+  }]
 }
