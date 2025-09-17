@@ -31,9 +31,6 @@ resource "helm_release" "cert-manager" {
     ]) : []
   )
 
-  depends_on = [
-    helm_release.nginx
-  ]
 }
 
 locals {

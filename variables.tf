@@ -8,6 +8,11 @@ variable "nginx_name" {
   description = "Release name for the installed helm chart"
 }
 
+variable "ingress_nginx_enable" {
+  default     = "true"
+  description = "Enable or disable the installation of the ingress-nginx Helm chart"
+}
+
 variable "nginx_yml_file" {
   default = null
 }
