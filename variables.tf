@@ -32,6 +32,12 @@ variable "cert_manager_email" {
   description = "Your email address to use for cert manager"
 }
 
+variable "cert_manager_enable" {
+  description = "Enable or disable cert-manager installation"
+  type        = bool
+  default     = true
+}
+
 variable "datadog_api_key" {
   default     = ""
   description = "The API key for datadog"
