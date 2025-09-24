@@ -1,4 +1,5 @@
 resource "helm_release" "cert-manager" {
+  count            = var.cert_manager_enable ? 1 : 0
   name             = "cert-manager"
   repository       = "https://charts.jetstack.io"
   chart            = "cert-manager"
@@ -34,7 +35,7 @@ resource "helm_release" "cert-manager" {
 }
 
 locals {
-  cert_manager_cluster_issuer = <<EOF
+  cert_manager_cluster_issuer = var.cert_manager_enable && var.cert_manager_email != null ? trimspace(<<EOF
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -55,10 +56,12 @@ spec:
         ingress:
           class: nginx
 EOF
+  ) : ""
 }
 
+
 resource "null_resource" "cert-manager-cluster-issuer" {
-  count = var.cert_manager_email == null ? 0 : 1
+  count = var.cert_manager_enable && var.cert_manager_email != null ? 1 : 0
 
   triggers = {
     manifest_sha1 = "${sha1("${local.cert_manager_cluster_issuer}")}"
