@@ -86,7 +86,7 @@ terraform destroy -auto-approve
 | <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | The version of the Cert-Manager Helm chart to be deployed, used for automating the issuance and renewal of TLS certificates. | `string` | `"1.16.3"` | no |
 | <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | The API key for datadog | `string` | `""` | no |
 | <a name="input_datadog_values"></a> [datadog\_values](#input\_datadog\_values) | Values for datadog helm chart | `string` | `""` | no |
-| <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | List of extra values for datadog helm chart | `list` | `[]` | no |
+| <a name="input_datadog_values_extra"></a> [datadog\_values\_extra](#input\_datadog\_values\_extra) | Path to extra values YAML file for Datadog Helm chart | `string` | `null` | no |
 | <a name="input_datadog_version"></a> [datadog\_version](#input\_datadog\_version) | The version of the Datadog Helm chart to be deployed, used for monitoring, security, and observability in Kubernetes environments. | `string` | `"3.88.3"` | no |
 | <a name="input_grafana_admin_password"></a> [grafana\_admin\_password](#input\_grafana\_admin\_password) | The Password of Grafana for login Dashboard | `string` | `""` | no |
 | <a name="input_grafana_admin_user"></a> [grafana\_admin\_user](#input\_grafana\_admin\_user) | The User name of Grafana for login Dashboard | `string` | `"opszero"` | no |
@@ -111,6 +111,7 @@ terraform destroy -auto-approve
 | <a name="input_kubecost_enabled"></a> [kubecost\_enabled](#input\_kubecost\_enabled) | A boolean to enable or disable the deployment of Kubecost, a tool for monitoring and managing Kubernetes cost and resource usage. | `bool` | `false` | no |
 | <a name="input_kubecost_version"></a> [kubecost\_version](#input\_kubecost\_version) | The version of the Kubecost Helm chart to be deployed, used for Kubernetes cost management and optimization. | `string` | `"2.5.3"` | no |
 | <a name="input_loki_version"></a> [loki\_version](#input\_loki\_version) | The version of the Loki Helm chart to be deployed, used for log aggregation and analysis. | `string` | `"6.25.0"` | no |
+| <a name="input_loki_yml_file"></a> [loki\_yml\_file](#input\_loki\_yml\_file) | Path to custom Loki YAML file | `string` | `null` | no |
 | <a name="input_nginx_max_replicas"></a> [nginx\_max\_replicas](#input\_nginx\_max\_replicas) | Maximum number of Nginx Replicas | `number` | `11` | no |
 | <a name="input_nginx_min_replicas"></a> [nginx\_min\_replicas](#input\_nginx\_min\_replicas) | Minimum number of Nginx Replicas | `number` | `2` | no |
 | <a name="input_nginx_name"></a> [nginx\_name](#input\_nginx\_name) | Release name for the installed helm chart | `string` | `"nginx"` | no |
