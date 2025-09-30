@@ -8,7 +8,9 @@ resource "helm_release" "nginx" {
   version          = var.ingress_nginx_version
 
   values = [
-    var.nginx_yml_file == null ? file("${path.module}/nginx.yml") : "${var.nginx_yml_file}"
+    var.nginx_yml_file != null  ?
+    file(var.nginx_yml_file) :
+    file("${path.module}/nginx.yml")
   ]
 
   set = [
