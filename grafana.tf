@@ -14,33 +14,19 @@ resource "helm_release" "grafana" {
   create_namespace = true
   repository       = "https://grafana.github.io/helm-charts"
   version          = var.grafana_version
-  values = concat(
-    [
-      templatefile("${path.module}/grafana.yml", {
-        GOOGLE_CLIENT_ID     = var.grafana_google_auth_client_id,
-        GOOGLE_CLIENT_SECRET = var.grafana_google_auth_client_secret,
-        INGRESS_ENABLED      = var.grafana_ingress_enabled,
-        INGRESS_CLASS_NAME   = var.grafana_ingress_class_name,
-        INGRESS_HOSTS        = var.grafana_ingress_hosts,
-        datasources          = var.grafana_datasources,
-        grafana_loki_enabled = var.grafana_loki_enabled,
-        storage_class        = var.grafana_efs_storage_class_name
-      })
-    ],
-    var.grafana_extra_yml != null  ? [
-      templatefile(var.grafana_extra_yml, {
-        GOOGLE_CLIENT_ID     = var.grafana_google_auth_client_id,
-        GOOGLE_CLIENT_SECRET = var.grafana_google_auth_client_secret,
-        INGRESS_ENABLED      = var.grafana_ingress_enabled,
-        INGRESS_CLASS_NAME   = var.grafana_ingress_class_name,
-        INGRESS_HOSTS        = var.grafana_ingress_hosts,
-        datasources          = var.grafana_datasources,
-        grafana_loki_enabled = var.grafana_loki_enabled,
-        storage_class        = var.grafana_efs_storage_class_name
-      })
-    ] : []
-
-  )
+  values = [
+    templatefile("${path.module}/grafana.yml", {
+      GOOGLE_CLIENT_ID     = var.grafana_google_auth_client_id
+      GOOGLE_CLIENT_SECRET = var.grafana_google_auth_client_secret,
+      INGRESS_ENABLED      = var.grafana_ingress_enabled,
+      INGRESS_CLASS_NAME   = var.grafana_ingress_class_name,
+      INGRESS_HOSTS        = var.grafana_ingress_hosts,
+      datasources          = var.grafana_datasources,
+      grafana_loki_enabled = var.grafana_loki_enabled,
+      storage_class        = var.grafana_efs_storage_class_name,
+    }),
+    var.grafana_extra_yml != null ? var.grafana_extra_yml : ""
+  ]
 
   set = concat(
     [

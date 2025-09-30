@@ -260,9 +260,3 @@ variable "loki_yml_file" {
   type        = string
   default     = null
 }
-
-variable "prometheus_yml_file" {
-  description = "Path to custom Prometheus YAML values file"
-  type        = string
-  default     = null
-}
