@@ -12,7 +12,7 @@ resource "helm_release" "datadog" {
   recreate_pods = true
 
   values = [
-    var.datadog_values_extra != null && var.datadog_values_extra != "" ?
+    var.datadog_values_extra != null  ?
     file(var.datadog_values_extra) :
     file("${path.module}/datadog.yml")
   ]

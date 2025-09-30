@@ -27,7 +27,7 @@ resource "helm_release" "grafana" {
         storage_class        = var.grafana_efs_storage_class_name
       })
     ],
-    var.grafana_extra_yml != null && var.grafana_extra_yml != "" ? [
+    var.grafana_extra_yml != null  ? [
       templatefile(var.grafana_extra_yml, {
         GOOGLE_CLIENT_ID     = var.grafana_google_auth_client_id,
         GOOGLE_CLIENT_SECRET = var.grafana_google_auth_client_secret,

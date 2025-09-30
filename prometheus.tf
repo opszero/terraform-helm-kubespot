@@ -19,7 +19,7 @@ resource "helm_release" "prometheus" {
         PUSH_GATEWAY_INGRESS_HOSTS = var.pushgateway_ingress_host
       })
     ] : [],
-    var.prometheus_yml_file != null && var.prometheus_yml_file != "" ? [
+    var.prometheus_yml_file != null  ? [
       file(var.prometheus_yml_file)
     ] : []
   )

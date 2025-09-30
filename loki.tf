@@ -10,7 +10,7 @@ resource "helm_release" "loki" {
   values = [
     try(
       templatefile(
-        var.loki_yml_file != null && var.loki_yml_file != "" ?
+        var.loki_yml_file != null  ?
         var.loki_yml_file :
         "${path.module}/loki.yml",
         {

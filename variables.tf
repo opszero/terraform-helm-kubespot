@@ -50,7 +50,7 @@ variable "datadog_values" {
 
 variable "datadog_values_extra" {
   type        = string
-  default     = ""
+  default     = null
   description = "Path to extra values YAML file for Datadog Helm chart"
 }
 

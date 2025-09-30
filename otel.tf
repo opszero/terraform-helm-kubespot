@@ -24,7 +24,7 @@ resource "helm_release" "opentelemetry_collector" {
   ]
 
   values = [
-    var.otel_yml_file != null && var.otel_yml_file != "" ?
+    var.otel_yml_file != null  ?
     file(var.otel_yml_file) :
     file("${path.module}/otel.yml")
   ]
