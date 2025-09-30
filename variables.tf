@@ -49,8 +49,9 @@ variable "datadog_values" {
 }
 
 variable "datadog_values_extra" {
-  default     = []
-  description = "List of extra values for datadog helm chart"
+  type        = string
+  default     = ""
+  description = "Path to extra values YAML file for Datadog Helm chart"
 }
 
 variable "grafana_enabled" {
@@ -254,3 +255,14 @@ variable "prometheus_version" {
   default     = "27.1.0"
 }
 
+variable "loki_yml_file" {
+  description = "Path to custom Loki YAML file"
+  type        = string
+  default     = null
+}
+
+variable "prometheus_yml_file" {
+  description = "Path to custom Prometheus YAML values file"
+  type        = string
+  default     = null
+}

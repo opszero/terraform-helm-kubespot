@@ -8,11 +8,21 @@ resource "helm_release" "prometheus" {
   repository       = "https://prometheus-community.github.io/helm-charts"
   version          = var.prometheus_version
 
-  values = length(var.prometheus_additional_scrape_configs) > 0 ? [
-    templatefile("${path.module}/prometheus_additional_scrape_config.yml", {
-      SCRAPE_CONFIG = var.prometheus_additional_scrape_configs,
-    }),
-  ] : []
+  values = concat(
+    length(var.prometheus_additional_scrape_configs) > 0 ? [
+      templatefile("${path.module}/prometheus_additional_scrape_config.yml", {
+        SCRAPE_CONFIG = var.prometheus_additional_scrape_configs,
+      })
+    ] : [],
+    length(var.pushgateway_ingress_host) > 0 ? [
+      templatefile("${path.module}/prometheus.yml", {
+        PUSH_GATEWAY_INGRESS_HOSTS = var.pushgateway_ingress_host
+      })
+    ] : [],
+    var.prometheus_yml_file != null && var.prometheus_yml_file != "" ? [
+      file(var.prometheus_yml_file)
+    ] : []
+  )
 
   set = concat(
     [

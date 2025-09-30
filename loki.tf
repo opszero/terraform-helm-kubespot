@@ -8,9 +8,17 @@ resource "helm_release" "loki" {
   version          = var.loki_version
 
   values = [
-    templatefile("${path.module}/loki.yml", {
-      storage_class = var.storage_class
-    }),
+    try(
+      templatefile(
+        var.loki_yml_file != null && var.loki_yml_file != "" ?
+        var.loki_yml_file :
+        "${path.module}/loki.yml",
+        {
+          storage_class = var.storage_class
+        }
+      ),
+      ""
+    )
   ]
 }
 

@@ -11,9 +11,11 @@ resource "helm_release" "datadog" {
   force_update  = true
   recreate_pods = true
 
-  values = concat(
-    [var.datadog_values == "" ? "${file("${path.module}/datadog.yml")}" : var.datadog_values],
-  var.datadog_values_extra)
+  values = [
+    var.datadog_values_extra != null && var.datadog_values_extra != "" ?
+    file(var.datadog_values_extra) :
+    file("${path.module}/datadog.yml")
+  ]
 
   version = var.datadog_version
   wait    = false
