@@ -104,8 +104,6 @@ variable "grafana_extra_yml" {
   description = "Grafana Datasources as Yaml"
 }
 
-
-
 variable "grafana_efs_enable" {
   default     = false
   description = "Enable EFS storage for Grafana"
@@ -147,18 +145,9 @@ variable "grafana_loki_enabled" {
   description = "Enable grafana loki"
 }
 
-variable "grafana_loki_yml_file" {
-  default = null
-}
-variable "otel_yml_file" {
-  default = null
-}
-
-
-variable "grafana_loki_bucket_name" {
-  type        = string
-  default     = ""
-  description = "Name for the S3 bucket"
+variable "grafana_otel_enabled" {
+  default     = false
+  description = "Enable grafana otel"
 }
 
 variable "prometheus_persistence_storage" {
@@ -217,7 +206,7 @@ variable "datadog_version" {
 
 variable "grafana_version" {
   description = "The version of the Grafana Helm chart to be deployed, used for data visualization and monitoring dashboards."
-  default     = "8.8.5"
+  default     = "10.5.15"
 }
 
 variable "keda_version" {
@@ -232,12 +221,12 @@ variable "kubecost_version" {
 
 variable "loki_version" {
   description = "The version of the Loki Helm chart to be deployed, used for log aggregation and analysis."
-  default     = "6.25.0"
+  default     = "6.55.0"
 }
 
 variable "promtail_version" {
   description = "The version of the Promtail Helm chart to be deployed, used as a log collector to send logs to Loki."
-  default     = "6.16.6"
+  default     = "6.17.1"
 }
 
 variable "ingress_nginx_version" {
@@ -247,16 +236,33 @@ variable "ingress_nginx_version" {
 
 variable "opentelemetry_collector_version" {
   description = "The version of the OpenTelemetry Collector Helm chart to be deployed, used for collecting telemetry data (logs, metrics, and traces) from various sources."
-  default     = "0.115.0"
+  default     = "0.149.0"
 }
 
 variable "prometheus_version" {
   description = "The version of the Prometheus Helm chart to be deployed, used for monitoring and alerting in Kubernetes."
-  default     = "27.1.0"
+  default     = "29.2.0"
 }
 
 variable "loki_yml_file" {
   description = "Path to custom Loki YAML file"
   type        = string
   default     = null
+}
+
+variable "tempo_yml_file" {
+  description = "Path to custom tempo YAML file"
+  type        = string
+  default     = null
+}
+
+variable "otel_yml_file" {
+  description = "Path to custom otel YAML file"
+  type        = string
+  default     = null
+}
+
+variable "tempo_version" {
+  description = "The version of the tempo Helm chart to be deployed"
+  default     = "1.24.4"
 }

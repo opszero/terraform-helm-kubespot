@@ -8,11 +8,24 @@ resource "helm_release" "prometheus" {
   repository       = "https://prometheus-community.github.io/helm-charts"
   version          = var.prometheus_version
 
-  values = length(var.prometheus_additional_scrape_configs) > 0 ? [
-    templatefile("${path.module}/prometheus_additional_scrape_config.yml", {
-      SCRAPE_CONFIG = var.prometheus_additional_scrape_configs,
-    }),
-  ] : []
+  values = concat(
+    length(var.prometheus_additional_scrape_configs) > 0 ? [
+      templatefile("${path.module}/prometheus_additional_scrape_config.yml", {
+        SCRAPE_CONFIG = var.prometheus_additional_scrape_configs,
+      })
+    ] : [],
+    length(var.pushgateway_ingress_host) > 0 ? [
+      templatefile("${path.module}/prometheus.yml", {
+        PUSH_GATEWAY_INGRESS_HOSTS = var.pushgateway_ingress_host
+      })
+    ] : [],
+    [<<-EOT
+      server:
+        extraFlags:
+          - web.enable-remote-write-receiver
+    EOT
+    ]
+  )
 
   set = concat(
     [
@@ -33,14 +46,6 @@ resource "helm_release" "prometheus" {
         value = var.storage_class
       }
     ],
-    length(var.pushgateway_ingress_host) > 0 ? [
-      {
-        name = "values"
-        value = templatefile("${path.module}/prometheus.yml", {
-          PUSH_GATEWAY_INGRESS_HOSTS = var.pushgateway_ingress_host
-        })
-      }
-    ] : [],
     var.prometheus_persistence_storage != false ? [
       {
         name  = "server.persistentVolume.existingClaim"

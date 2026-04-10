@@ -1,0 +1,54 @@
+tempo:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4317
+        http:
+          endpoint: 0.0.0.0:4318
+  storage:
+    trace:
+      backend: local
+      local:
+        path: /var/tempo/traces
+      wal:
+        path: /var/tempo/wal
+
+  server:
+    http_listen_port: 3200
+
+  search:
+    enabled: true
+    max_duration: 0s
+
+  metricsGenerator:
+    enabled: true
+    remoteWriteUrl: http://prometheus-server.prometheus.svc.cluster.local/api/v1/write
+
+persistence:
+  enabled: true
+  storageClassName: ${storage_class}
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+service:
+  type: ClusterIP
+
+extraPorts:
+  - name: otlp-grpc
+    port: 4317
+    targetPort: 4317
+    protocol: TCP
+  - name: otlp-http
+    port: 4318
+    targetPort: 4318
+    protocol: TCP

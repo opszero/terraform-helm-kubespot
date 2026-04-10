@@ -4,5 +4,9 @@ prometheus-pushgateway:
     className: nginx
     hosts:
     %{ for host in PUSH_GATEWAY_INGRESS_HOSTS }
-      - ${host}
+    - ${host}
     %{ endfor }
+
+server:
+  extraFlags:
+    - web.enable-remote-write-receiver

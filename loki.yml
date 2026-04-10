@@ -3,24 +3,46 @@ deploymentMode: SingleBinary
 loki:
   auth_enabled: false
 
+  commonConfig:
+    replication_factor: 1
+    ring:
+      kvstore:
+        store: inmemory
+
+  common:
+    path_prefix: /var/loki
+    storage:
+      filesystem:
+        chunks_directory: /var/loki/chunks
+        rules_directory: /var/loki/rules
+    replication_factor: 1
+    ring:
+      instance_addr: 127.0.0.1
+      kvstore:
+        store: inmemory
+
+  # Required by chart template validation even when using filesystem storage
   storage:
     type: filesystem
-    filesystem:
-      dir: /var/loki/chunks
+    bucketNames:
+      chunks: chunks
+      ruler: ruler
+      admin: admin
 
   schemaConfig:
     configs:
       - from: 2024-04-01
-        store: boltdb-shipper
+        store: tsdb
         object_store: filesystem
-        schema: v11
+        schema: v13
         index:
           prefix: index_
           period: 24h
 
-  storage_config:
-    filesystem:
-      directory: /var/loki/chunks
+  ingester:
+    wal:
+      enabled: true
+      dir: /var/loki/wal
 
   compactor:
     working_directory: /var/loki/compactor
@@ -34,28 +56,16 @@ loki:
       local:
         directory: /var/loki/rules
 
-  ingester:
-    wal:
-      enabled: true
-      dir: /var/loki/wal
-
   server:
     http_listen_port: 3100
-
-  commonConfig:
-    replication_factor: 1
-    ring:
-      kvstore:
-        store: inmemory
+    grpc_listen_port: 9095
 
   limits_config:
-    allow_structured_metadata: false
+    allow_structured_metadata: true
     reject_old_samples: false
     reject_old_samples_max_age: 168h
     retention_period: 168h
-
-  extraArgs:
-    - -config.expand-env=true
+    volume_enabled: true
 
 singleBinary:
   replicas: 1
