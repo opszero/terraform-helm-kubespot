@@ -1,12 +1,21 @@
 prometheus-pushgateway:
   ingress:
-    enabled: true
+    enabled: %{ if length(PUSH_GATEWAY_INGRESS_HOSTS) > 0 }true%{ else }false%{ endif }
     className: nginx
-    hosts:
-    %{ for host in PUSH_GATEWAY_INGRESS_HOSTS }
-    - ${host}
-    %{ endfor }
+  %{ if length(PUSH_GATEWAY_INGRESS_HOSTS) > 0 }
+hosts:
+  %{ for host in PUSH_GATEWAY_INGRESS_HOSTS }
+- ${host}
+  %{ endfor }
+  %{ endif }
 
 server:
+  global:
+    scrape_interval: 10s
+    scrape_timeout: 5s
+  retention: 15d
+  persistentVolume:
+    enabled: true
+    size: 20Gi
   extraFlags:
     - web.enable-remote-write-receiver

@@ -151,7 +151,7 @@ variable "grafana_otel_enabled" {
 }
 
 variable "prometheus_persistence_storage" {
-  default     = false
+  default     = true
   description = "Enable persistence storage for Prometheus"
 }
 
