@@ -10,9 +10,9 @@ resource "helm_release" "loki" {
   values = [
     try(
       templatefile(
-        var.loki_yml_file != null  ?
-        var.loki_yml_file :
-        "${path.module}/loki.yml",
+          var.loki_yml_file != null  ?
+          var.loki_yml_file :
+          "${path.module}/loki.yml",
         {
           storage_class = var.storage_class
         }
@@ -51,7 +51,7 @@ resource "helm_release" "promtail" {
 
   values = [
     templatefile("${path.module}/promtail-values.yaml", {
-      loki_apps_regex = join("|", var.loki_allowed_apps)
+      loki_allowed_apps_regex = join("|", var.loki_allowed_apps)
     })
   ]
 }

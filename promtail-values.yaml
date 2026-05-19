@@ -1,8 +1,6 @@
 config:
   snippets:
     pipelineStages:
-  %{ if length(loki_allowed_apps) > 0 ~}
-- match:
-    selector: '{app!~"(${join("|", loki_allowed_apps)})"}'
-    action: drop
-  %{ endif ~}
+      - match:
+          selector: '{app!~"(${loki_allowed_apps_regex})"}'
+          action: drop
