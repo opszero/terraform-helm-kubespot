@@ -146,6 +146,12 @@ variable "grafana_loki_enabled" {
   default     = false
   description = "Enable grafana loki"
 }
+variable "loki_allowed_apps" {
+  description = "Allowed Kubernetes apps for Loki log collection"
+  type        = list(string)
+
+  default = []
+}
 
 variable "grafana_loki_yml_file" {
   default = null
