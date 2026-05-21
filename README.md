@@ -110,6 +110,7 @@ terraform destroy -auto-approve
 | <a name="input_keda_version"></a> [keda\_version](#input\_keda\_version) | The version of the KEDA Helm chart to be deployed, used for Kubernetes-based Event-Driven Autoscaling. | `string` | `"2.16.1"` | no |
 | <a name="input_kubecost_enabled"></a> [kubecost\_enabled](#input\_kubecost\_enabled) | A boolean to enable or disable the deployment of Kubecost, a tool for monitoring and managing Kubernetes cost and resource usage. | `bool` | `false` | no |
 | <a name="input_kubecost_version"></a> [kubecost\_version](#input\_kubecost\_version) | The version of the Kubecost Helm chart to be deployed, used for Kubernetes cost management and optimization. | `string` | `"2.5.3"` | no |
+| <a name="input_loki_allowed_apps"></a> [loki\_allowed\_apps](#input\_loki\_allowed\_apps) | Allowed Kubernetes apps for Loki log collection | `list(string)` | `[]` | no |
 | <a name="input_loki_version"></a> [loki\_version](#input\_loki\_version) | The version of the Loki Helm chart to be deployed, used for log aggregation and analysis. | `string` | `"6.25.0"` | no |
 | <a name="input_loki_yml_file"></a> [loki\_yml\_file](#input\_loki\_yml\_file) | Path to custom Loki YAML file | `string` | `null` | no |
 | <a name="input_nginx_max_replicas"></a> [nginx\_max\_replicas](#input\_nginx\_max\_replicas) | Maximum number of Nginx Replicas | `number` | `11` | no |
