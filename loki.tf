@@ -10,9 +10,9 @@ resource "helm_release" "loki" {
   values = [
     try(
       templatefile(
-        var.loki_yml_file != null  ?
-        var.loki_yml_file :
-        "${path.module}/loki.yml",
+          var.loki_yml_file != null  ?
+          var.loki_yml_file :
+          "${path.module}/loki.yml",
         {
           storage_class = var.storage_class
         }
@@ -26,13 +26,13 @@ resource "helm_release" "loki" {
 # Promtail Helm Release
 # -------------------------
 resource "helm_release" "promtail" {
-  count            = var.grafana_loki_enabled ? 1 : 0
-  chart            = "promtail"
-  name             = "promtail"
-  namespace        = "loki"
-  create_namespace = true
-  repository       = "https://grafana.github.io/helm-charts"
-  version          = var.promtail_version
+  count             = var.grafana_loki_enabled ? 1 : 0
+  chart             = "promtail"
+  name              = "promtail"
+  namespace         = "loki"
+  create_namespace  = true
+  repository        = "https://grafana.github.io/helm-charts"
+  version           = var.promtail_version
 
   set = [
     {
@@ -47,5 +47,11 @@ resource "helm_release" "promtail" {
       name  = "config.clients[0].url"
       value = "http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push"
     }
+  ]
+
+  values = [
+    templatefile("${path.module}/promtail-values.yaml", {
+      loki_allowed_apps_regex = join("|", var.loki_allowed_apps)
+    })
   ]
 }

@@ -1,0 +1,6 @@
+config:
+  snippets:
+    pipelineStages:
+      - match:
+          selector: '{app!~"(${loki_allowed_apps_regex})"}'
+          action: drop
