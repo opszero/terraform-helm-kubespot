@@ -266,3 +266,9 @@ variable "loki_yml_file" {
   type        = string
   default     = null
 }
+
+variable "loki_promtail_yml_file" {
+  description = "Path to custom Promtail values YAML file"
+  type        = string
+  default     = null
+}
