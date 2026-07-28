@@ -167,6 +167,26 @@ variable "grafana_loki_bucket_name" {
   description = "Name for the S3 bucket"
 }
 
+variable "prometheus_retention" {
+  description = "Prometheus data retention period"
+  default     = "7d"
+}
+
+variable "prometheus_persistent_volume_size" {
+  description = "Prometheus persistent volume size"
+  default     = "8Gi"
+}
+
+variable "prometheus_persistent_volume_existing_claim" {
+  description = "Prometheus existing persistent volume claim name"
+  default     = ""
+}
+
+variable "prometheus_alertmanager_persistence_enabled" {
+  description = "Enable persistence storage for Prometheus Alertmanager"
+  default     = false
+}
+
 variable "prometheus_persistence_storage" {
   default     = false
   description = "Enable persistence storage for Prometheus"
