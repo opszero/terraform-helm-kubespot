@@ -174,7 +174,7 @@ variable "prometheus_retention" {
 
 variable "prometheus_persistent_volume_size" {
   description = "Prometheus persistent volume size"
-  default     = "8Gi"
+  default     = "16Gi"
 }
 
 variable "prometheus_persistent_volume_existing_claim" {
