@@ -22,7 +22,7 @@ resource "helm_release" "prometheus" {
       },
       {
         name  = "server.retention"
-        value = "1d"
+        value = var.prometheus_retention
       },
       {
         name  = "server.persistentVolume.enabled"
@@ -44,17 +44,17 @@ resource "helm_release" "prometheus" {
     var.prometheus_persistence_storage != false ? [
       {
         name  = "server.persistentVolume.existingClaim"
-        value = ""
+        value = var.prometheus_persistent_volume_existing_claim
       },
       {
         name  = "server.persistentVolume.size"
-        value = "8Gi"
+        value = var.prometheus_persistent_volume_size
       }
     ] : [],
     [
       {
         name  = "alertmanager.persistence.enabled"
-        value = false
+        value = var.prometheus_alertmanager_persistence_enabled
       }
     ]
   )
