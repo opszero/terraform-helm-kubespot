@@ -50,8 +50,13 @@ resource "helm_release" "promtail" {
   ]
 
   values = [
-    templatefile("${path.module}/promtail-values.yaml", {
-      loki_allowed_apps_regex = join("|", var.loki_allowed_apps)
-    })
+    templatefile(
+      var.loki_promtail_yml_file != null ?
+      var.loki_promtail_yml_file :
+      "${path.module}/promtail-values.yaml",
+      {
+        loki_allowed_apps_regex = join("|", var.loki_allowed_apps)
+      }
+    )
   ]
 }
