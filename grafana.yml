@@ -51,6 +51,14 @@ grafana.ini:
     hosted_domain: ${host}
     %{ endfor }
 
+  # Security: don't expose /metrics publicly (it leaks the Grafana version)
+  metrics:
+    enabled: ${METRICS_ENABLED}
+
+  # Security: hide the Grafana version from users who aren't logged in
+  auth.anonymous:
+    hide_version: true
+
   server:
     %{ for host in INGRESS_HOSTS }
     domain: ${host}
