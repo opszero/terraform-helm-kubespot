@@ -53,7 +53,7 @@ grafana.ini:
 
   # Security: don't expose /metrics publicly (it leaks the Grafana version)
   metrics:
-    enabled: ${METRICS_ENABLED}
+    enabled: ${metrics_enabled}
 
   # Security: hide the Grafana version from users who aren't logged in
   auth.anonymous:
