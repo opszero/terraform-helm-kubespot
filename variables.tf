@@ -69,6 +69,11 @@ variable "grafana_admin_password" {
   description = "The Password of Grafana for login Dashboard"
 }
 
+variable "grafana_metrics_enabled" {
+  default     = false
+  description = "Expose Grafana's /metrics endpoint. Disabled by default because it discloses the Grafana version."
+}
+
 variable "grafana_ingress_enabled" {
   default     = false
   description = "Enable grafana ingress"
