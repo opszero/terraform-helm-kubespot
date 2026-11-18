@@ -103,6 +103,7 @@ terraform destroy -auto-approve
 | <a name="input_grafana_loki_bucket_name"></a> [grafana\_loki\_bucket\_name](#input\_grafana\_loki\_bucket\_name) | Name for the S3 bucket | `string` | `""` | no |
 | <a name="input_grafana_loki_enabled"></a> [grafana\_loki\_enabled](#input\_grafana\_loki\_enabled) | Enable grafana loki | `bool` | `false` | no |
 | <a name="input_grafana_loki_yml_file"></a> [grafana\_loki\_yml\_file](#input\_grafana\_loki\_yml\_file) | n/a | `any` | `null` | no |
+| <a name="input_grafana_metrics_enabled"></a> [grafana\_metrics\_enabled](#input\_grafana\_metrics\_enabled) | Expose Grafana's /metrics endpoint. Disabled by default because it discloses the Grafana version. | `bool` | `false` | no |
 | <a name="input_grafana_persistence_storage"></a> [grafana\_persistence\_storage](#input\_grafana\_persistence\_storage) | Enable persistence storage for Grafana | `bool` | `true` | no |
 | <a name="input_grafana_version"></a> [grafana\_version](#input\_grafana\_version) | The version of the Grafana Helm chart to be deployed, used for data visualization and monitoring dashboards. | `string` | `"8.8.5"` | no |
 | <a name="input_ingress_nginx_enable"></a> [ingress\_nginx\_enable](#input\_ingress\_nginx\_enable) | Enable or disable the installation of the ingress-nginx Helm chart | `string` | `"true"` | no |
