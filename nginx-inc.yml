@@ -1,0 +1,17 @@
+controller:
+  ingressClass:
+    name: nginx-inc
+    create: true
+    setAsDefaultIngress: false
+  replicaCount: 2
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+      service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "3600"
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+  config:
+    entries:
+      client-max-body-size: "2048m"
+prometheus:
+  create: true
