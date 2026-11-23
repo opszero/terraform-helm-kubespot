@@ -291,3 +291,20 @@ variable "loki_yml_file" {
   type        = string
   default     = null
 }
+
+variable "nginx_inc_enable" {
+  description = "Install F5 NGINX Ingress Controller (replacement for archived ingress-nginx)"
+  type        = bool
+  default     = false
+}
+
+variable "nginx_inc_version" {
+  description = "Helm chart version of F5 NGINX Ingress Controller"
+  default     = "2.9.0"
+}
+
+variable "nginx_inc_yml_file" {
+  description = "Optional custom values file for F5 NGINX Ingress Controller"
+  type        = string
+  default     = null
+}
