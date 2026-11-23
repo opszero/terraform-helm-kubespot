@@ -1,6 +1,7 @@
 controller:
   allowSnippetAnnotations: true
   config:
+    use-http2: "false"
     enable-underscores-in-headers: "true"
     use-forwarded-headers: "true"
     keep-alive-requests: 10000
